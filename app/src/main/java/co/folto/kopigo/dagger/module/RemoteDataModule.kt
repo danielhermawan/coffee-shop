@@ -45,11 +45,6 @@ class RemoteDataModule {
     @Provides
     @Singleton
     fun provideOkhttpClient(cache: Cache): OkHttpClient {
-        val logging = HttpLoggingInterceptor(object : HttpLoggingInterceptor.Logger {
-            override fun log(message: String) {
-                Timber.tag("OkHttp").d(message)
-            }
-        })
         val client = OkHttpClient().newBuilder().cache(cache)
         if (BuildConfig.DEBUG){
             val logging = HttpLoggingInterceptor(object : HttpLoggingInterceptor.Logger {

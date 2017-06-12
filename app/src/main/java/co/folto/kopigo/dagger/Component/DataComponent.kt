@@ -13,5 +13,5 @@ import javax.inject.Singleton
 @Singleton
 @Component(modules = arrayOf(ApplicationModule::class, LocalDataModule::class, RemoteDataModule::class))
 interface DataComponent {
-    fun repoRepository(): OrderRepository
+    fun orderRepository(): OrderRepository
 }
