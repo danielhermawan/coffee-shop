@@ -1,4 +1,4 @@
-package co.folto.gitfinder.data.local
+package co.folto.kopigo.data.local
 
 import android.content.SharedPreferences
 import javax.inject.Inject
