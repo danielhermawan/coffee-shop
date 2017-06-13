@@ -7,6 +7,6 @@
     <color name="white">#FFFFFF</color>
     <color name="transparent_white">#80FFFFFF</color>
     <color name="black">#000000</color>
-    <color name="bg_button_login">#bda865</color>
+    <color name="light_brown">#bda865</color>
 
 </resources>

@@ -20,11 +20,9 @@ class KopigoApplication: Application() {
 
     override fun onCreate() {
         super.onCreate()
-        if (LeakCanary.isInAnalyzerProcess(this)) {
-            return
-        }
-        LeakCanary.install(this)
         if (BuildConfig.DEBUG) {
+            if (LeakCanary.isInAnalyzerProcess(this)) return
+            LeakCanary.install(this)
             Timber.plant(Timber.DebugTree())
             Stetho.initializeWithDefaults(this)
         }

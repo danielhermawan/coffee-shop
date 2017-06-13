@@ -2,19 +2,19 @@
     <string name="app_name">Kopigo</string>
 
     <!-- Login Activity -->
-    <string name="welcome">w e l c o m e</string>
-    <string name="username">Username</string>
-    <string name="password">Password</string>
-    <string name="sign_in">Sign in</string>
-    <string name="forgot_password">forgot password? click here</string>
-    <string name="copyright">KOPIGOAPPS &#169; 2017 - All right reserved</string>
-    <string name="tnc">Terms and Condition and Privacy Policy</string>
+    <string name="login.welcome">w e l c o m e</string>
+    <string name="login.username">Username</string>
+    <string name="login.password">Password</string>
+    <string name="login.sign_in">Sign in</string>
+    <string name="login.forgot_password">forgot password? click here</string>
+    <string name="login.copyright">KOPIGOAPPS &#169; 2017 - All right reserved</string>
+    <string name="login.tnc">Terms and Condition and Privacy Policy</string>
 
     <!-- Main Activity -->
-    <string name="order">order</string>
-    <string name="stock">stock</string>
-    <string name="manual">manual</string>
-    <string name="promo">promo</string>
-    <string name="sales_report">sales report</string>
+    <string name="main.order">order</string>
+    <string name="main.stock">stock</string>
+    <string name="main.manual">manual</string>
+    <string name="main.promo">promo</string>
+    <string name="main.sales_report">sales report</string>
 
 </resources>

@@ -7,14 +7,14 @@
     </solid>
 
     <padding
-        android:top="5dp"
-        android:bottom="5dp"
-        android:left="5dp"
-        android:right="5dp">
+        android:top="@dimen/small_space"
+        android:bottom="@dimen/small_space"
+        android:left="@dimen/small_space"
+        android:right="@dimen/small_space">
     </padding>
 
     <corners
-        android:radius="6dp">
+        android:radius="@dimen/shape_button_radius">
     </corners>
 
 </shape>

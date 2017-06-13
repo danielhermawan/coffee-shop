@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bglogin"
+    android:background="@drawable/bitmap_bg_login"
     android:orientation="vertical"
     tools:context="co.folto.kopigo.ui.main.MainActivity">
 
@@ -25,14 +25,14 @@
             <ImageView
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:src="@drawable/order"
-                android:contentDescription="@string/order"/>
+                android:src="@drawable/bitmap_order"
+                android:contentDescription="@string/main.order"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/medium_space"
-                android:text="@string/order"
+                android:text="@string/main.order"
                 android:textAllCaps="true"
                 android:textColor="@color/white"
                 android:textSize="@dimen/text_extra_large"/>
@@ -50,14 +50,14 @@
             <ImageView
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:src="@drawable/stock"
-                android:contentDescription="@string/stock"/>
+                android:src="@drawable/bitmap_stock"
+                android:contentDescription="@string/main.stock"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/medium_space"
-                android:text="@string/stock"
+                android:text="@string/main.stock"
                 android:textAllCaps="true"
                 android:textColor="@color/white"
                 android:textSize="@dimen/text_extra_large"/>
@@ -79,16 +79,16 @@
             android:orientation="vertical">
 
             <ImageView
-                android:src="@drawable/manual"
+                android:src="@drawable/bitmap_manual"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:contentDescription="@string/manual"/>
+                android:contentDescription="@string/main.manual"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/medium_space"
-                android:text="@string/manual"
+                android:text="@string/main.manual"
                 android:textColor="@color/white"
                 android:textAllCaps="true"
                 android:textSize="@dimen/text_extra_large"/>
@@ -102,16 +102,16 @@
             android:orientation="vertical">
 
             <ImageView
-                android:src="@drawable/promo"
+                android:src="@drawable/bitmap_promo"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:contentDescription="@string/promo"/>
+                android:contentDescription="@string/main.promo"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/medium_space"
-                android:text="@string/promo"
+                android:text="@string/main.promo"
                 android:textColor="@color/white"
                 android:textAllCaps="true"
                 android:textSize="@dimen/text_extra_large"/>
@@ -133,16 +133,16 @@
             android:orientation="vertical">
 
             <ImageView
-                android:src="@drawable/sales_report"
+                android:src="@drawable/bitmap_sales_report"
                 android:layout_width="100dp"
-                android:contentDescription="@string/sales_report"
+                android:contentDescription="@string/main.sales_report"
                 android:layout_height="100dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/medium_space"
-                android:text="@string/sales_report"
+                android:text="@string/main.sales_report"
                 android:textColor="@color/white"
                 android:textAllCaps="true"
                 android:textSize="@dimen/text_extra_large"/>
