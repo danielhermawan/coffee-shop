@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <dimen name="large_space">32dp</dimen>
     <dimen name="medium_space">16dp</dimen>
     <dimen name="small_space">8dp</dimen>
     <dimen name="very_small_space">4dp</dimen>
@@ -7,6 +8,7 @@
     <dimen name="text_small">10sp</dimen>
     <dimen name="text_medium">14sp</dimen>
     <dimen name="text_large">18sp</dimen>
+    <dimen name="text_extra_large">24sp</dimen>
 
     <dimen name="item_progressbar">40dp</dimen>
 </resources>
