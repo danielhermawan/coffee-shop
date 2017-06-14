@@ -1,9 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/parentView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bitmap_bg_login">
+
+    <ProgressBar
+        android:id="@+id/progress"
+        android:layout_width="@dimen/item_progressbar"
+        android:layout_height="@dimen/item_progressbar"
+        android:layout_centerInParent="true"
+        android:visibility="gone"
+        tools:visibility="visible"/>
 
     <ImageView
         android:id="@+id/imageLogo"
@@ -34,6 +44,7 @@
         android:orientation="vertical">
 
         <EditText
+            android:id="@+id/editUsername"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/small_space"
@@ -44,12 +55,16 @@
             style="@style/login_editText"/>
 
         <EditText
+            android:id="@+id/editPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/small_space"
             android:layout_marginRight="@dimen/small_space"
             android:hint="@string/login.password"
             android:inputType="textPassword"
+            android:imeActionLabel="@string/login.sign_in"
+            android:imeActionId="@+id/signup_ime"
+            android:imeOptions="actionUnspecified"
             android:drawableRight="@drawable/ic_lock"
             style="@style/login_editText"/>
 

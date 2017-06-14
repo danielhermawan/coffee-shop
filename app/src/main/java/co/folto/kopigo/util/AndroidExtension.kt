@@ -2,6 +2,7 @@ package co.folto.kopigo.util
 
 import android.annotation.TargetApi
 import android.content.Context
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
 import android.support.design.widget.Snackbar
@@ -32,6 +33,12 @@ fun SwipeRefreshLayout.setDefaultColors(context: Context)
 
 fun FragmentManager.addToActitivity(fragment: Fragment, frameId: Int)
         = this.beginTransaction().add(frameId, fragment).commit()
+
+fun AppCompatActivity.startNewActivitySession(intent: Intent) {
+    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+    this.startActivity(intent)
+    this.finish()
+}
 
 @TargetApi(Build.VERSION_CODES.M)
 fun AppCompatActivity.requestPermissionsSafely(permissions: Array<String>, requestCode: Int) {

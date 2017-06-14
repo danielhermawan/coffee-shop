@@ -61,6 +61,7 @@ dependencies {
     //Depedency for rxjava
     compile "io.reactivex.rxjava2:rxjava:$rootProject.rxjavaVersion"
     compile "io.reactivex.rxjava2:rxkotlin:$rootProject.rxkotlinVersion"
+    compile 'com.jakewharton.rxbinding2:rxbinding:2.0.0'
     compile "io.reactivex.rxjava2:rxandroid:$rootProject.rxandroidVersion"
 
     //Depedency for network library
@@ -78,7 +79,7 @@ dependencies {
     compile "com.facebook.stetho:stetho-okhttp3:$rootProject.stethoVersion"
 
     //Depedency for utility library
-    compile "org.greenrobot:eventbus:$rootProject.eventBusVersion"
+    compile "com.squareup:otto:$rootProject.eventBusVersion"
     compile "com.jakewharton.timber:timber:$rootProject.timberVersion"
     compile "joda-time:joda-time:$rootProject.jodaTime"
 

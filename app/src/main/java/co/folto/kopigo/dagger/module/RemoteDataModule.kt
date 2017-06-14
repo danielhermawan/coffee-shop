@@ -2,7 +2,11 @@ package co.folto.kopigo.dagger.module
 
 import android.app.Application
 import co.folto.kopigo.BuildConfig
+import co.folto.kopigo.data.local.PreferenceHelper
+import co.folto.kopigo.data.remote.GeneralInterceptor
 import co.folto.kopigo.data.remote.KopigoService
+import co.folto.kopigo.data.remote.TokenInterceptor
+import co.folto.kopigo.util.Constant
 import com.facebook.stetho.okhttp3.StethoInterceptor
 import com.google.gson.FieldNamingPolicy
 import com.google.gson.Gson
@@ -24,7 +28,6 @@ import javax.inject.Singleton
 
 @Module
 class RemoteDataModule {
-    private val BASE_URL = "https://kopigo.folto.co/"
 
     @Provides
     @Singleton
@@ -44,8 +47,9 @@ class RemoteDataModule {
 
     @Provides
     @Singleton
-    fun provideOkhttpClient(cache: Cache): OkHttpClient {
+    fun provideOkhttpClient(cache: Cache, preferenceHelper: PreferenceHelper): OkHttpClient {
         val client = OkHttpClient().newBuilder().cache(cache)
+        client.addInterceptor(GeneralInterceptor())
         if (BuildConfig.DEBUG){
             val logging = HttpLoggingInterceptor(object : HttpLoggingInterceptor.Logger {
                 override fun log(message: String) {
@@ -53,6 +57,7 @@ class RemoteDataModule {
                 }
             })
             client.addInterceptor(logging).addNetworkInterceptor(StethoInterceptor())
+                    .addInterceptor(TokenInterceptor(preferenceHelper))
         }
         return client.build()
     }
@@ -60,7 +65,7 @@ class RemoteDataModule {
     @Provides
     @Singleton
     fun provideRetrofit(gson: Gson, okHttpClient: OkHttpClient): Retrofit = Retrofit.Builder()
-            .baseUrl(BASE_URL)
+            .baseUrl(Constant.API_URL)
             .addConverterFactory(GsonConverterFactory.create(gson))
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .client(okHttpClient)

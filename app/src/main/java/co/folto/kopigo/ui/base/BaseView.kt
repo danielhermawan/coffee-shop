@@ -3,7 +3,7 @@ package co.folto.kopigo.ui.base
 /**
  * Created by Daniel on 5/23/2017 for GitFInder project.
  */
-interface BaseView<T>{
+interface BaseView{
 
-    fun attachPresenter(presenter: T)
+    //fun attachPresenter(Presenter: T)
 }

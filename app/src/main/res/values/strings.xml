@@ -16,5 +16,8 @@
     <string name="main.manual">manual</string>
     <string name="main.promo">promo</string>
     <string name="main.sales_report">sales report</string>
+    <string name="login.login_success">Login Success</string>
+    <string name="login.error_username">Username must be filled</string>
+    <string name="login.error_password">Password must be filled</string>
 
 </resources>

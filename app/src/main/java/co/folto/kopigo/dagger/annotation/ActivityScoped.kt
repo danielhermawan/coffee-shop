@@ -1,4 +1,4 @@
-package co.folto.gitfinder.injection.annotation
+package co.folto.kopigo.dagger.annotation
 
 import javax.inject.Scope
 
