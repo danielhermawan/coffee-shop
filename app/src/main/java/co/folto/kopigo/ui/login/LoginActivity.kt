@@ -66,6 +66,7 @@ class LoginActivity: AppCompatActivity(), LoginContract.View {
 
     override fun loginError(message: String) {
         editUsername.setError(message)
+        editUsername.requestFocus()
     }
 
     override fun showError(message: String) {
@@ -86,20 +87,25 @@ class LoginActivity: AppCompatActivity(), LoginContract.View {
     @Suppress("CAST_NEVER_SUCCEEDS")
     fun attempLogin() {
         var valid = true
-        editPassword.setError("")
-        editUsername.setError("")
-        val username = editUsername.text as String
-        val password = editUsername.text as String
-        if(username == "") {
-            editUsername.setError(getString(R.string.login_error_username))
-            valid = false
-        }
-        if(password == ""){
+        editPassword.setError(null)
+        editUsername.setError(null)
+        val username = editUsername.text
+        val password = editPassword.text
+        var focusView: View? = null
+        if(password.isEmpty()){
             editPassword.setError(getString(R.string.login_error_password))
+            focusView = editPassword
             valid = false
         }
-        if(valid) {
-            presenter.login(username, password)
+        if(username.isEmpty()) {
+            editUsername.setError(getString(R.string.login_error_username))
+            focusView = editUsername
+            valid = false
         }
+
+        if(valid)
+            presenter.login(username.toString(), password.toString())
+        else
+            focusView?.requestFocus()
     }
 }

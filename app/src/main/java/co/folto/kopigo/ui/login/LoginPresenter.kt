@@ -5,6 +5,7 @@ import co.folto.kopigo.util.start
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.subscribeBy
 import retrofit2.HttpException
+import timber.log.Timber
 
 /**
  * Created by Daniel on 6/14/2017 for Kopigo project.
@@ -36,11 +37,12 @@ class LoginPresenter (
                     view.loginSuccess()
                 },
                 onError = {
+                    Timber.e(it)
                     view.showLoading(false)
                     if(it is HttpException)
                         view.loginError("Username or password is wrong")
                     else
-                        view.loginError("There is some kind of network trouble, please try again")
+                        view.showError("There is some kind of network trouble, please try again")
                 }
             )
         composite.add(request)

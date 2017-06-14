@@ -5,15 +5,7 @@
     android:id="@+id/parentView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bitmap_bg_login">
-
-    <ProgressBar
-        android:id="@+id/progress"
-        android:layout_width="@dimen/item_progressbar"
-        android:layout_height="@dimen/item_progressbar"
-        android:layout_centerInParent="true"
-        android:visibility="gone"
-        tools:visibility="visible"/>
+    android:background="@drawable/bitmap_bglogin">
 
     <ImageView
         android:id="@+id/imageLogo"
@@ -69,6 +61,16 @@
             style="@style/login_editText"/>
 
     </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/progress"
+        android:layout_width="@dimen/item_progressbar"
+        android:layout_height="@dimen/item_progressbar"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@id/formLogin"
+        android:visibility="gone"
+        tools:visibility="visible"/>
+
 
     <Button
         android:id="@+id/buttonSignin"
