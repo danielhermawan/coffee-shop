@@ -52,6 +52,7 @@ dependencies {
 
     //Depedency for ui library
     compile 'de.hdodenhof:circleimageview:2.1.0'
+    compile 'com.nightonke:boommenu:2.1.0'
 
     //Depedency for dagger
     compile "com.google.dagger:dagger:$rootProject.daggerVersion"

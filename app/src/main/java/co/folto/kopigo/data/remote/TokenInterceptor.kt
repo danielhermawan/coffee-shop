@@ -20,7 +20,7 @@ class TokenInterceptor(private val mPreference: PreferenceHelper) : Interceptor 
         val url = originalRequest.url().toString()
         val path = url.split(Constant.API_URL).dropLastWhile { it.isEmpty() }.toTypedArray()[1]
         val newRequest = originalRequest.newBuilder()
-        if (exception.contains(path)) {
+        if (!exception.contains(path)) {
             newRequest.addHeader("Authorization", "Bearer " + token)
         }
         return chain.proceed(newRequest.build())

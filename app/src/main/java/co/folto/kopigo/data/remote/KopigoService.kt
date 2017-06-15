@@ -15,7 +15,6 @@ interface KopigoService {
     @POST("login")
     fun login(@Field("username") username: String, @Field("password") password: String): Single<LoginResponse>
 
-    @FormUrlEncoded
     @POST("logout")
     fun logout(): Completable
 }

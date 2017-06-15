@@ -14,6 +14,7 @@ interface MainContract {
 
     interface View : BaseView {
         fun navigateToLogin()
+        fun showLoading(active: Boolean)
         fun showMessage(message: String)
     }
 }

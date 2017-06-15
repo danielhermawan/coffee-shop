@@ -10,7 +10,7 @@ class GeneralInterceptor: Interceptor{
     override fun intercept(chain: Interceptor.Chain): Response {
         val originalRequest = chain.request()
         val newRequest = originalRequest.newBuilder()
-                .addHeader("Content-Type", "application/json")
+                .addHeader("Accept", "application/json")
                 .build()
         //todo: make general network error such as token expire
         return chain.proceed(newRequest)

@@ -48,6 +48,13 @@
         <item name="android:textSize">@dimen/text_large</item>
     </style>
 
+    <style name="toolbar_title">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/text_large</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textColor">#CCBA95</item>
+    </style>
+
     <style name="login_copyright" parent="text_small.white">
         <item name="android:gravity">center</item>
     </style>

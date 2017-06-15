@@ -19,5 +19,8 @@
     <string name="login.login_success">Login Success</string>
     <string name="login.error_username">Username must be filled</string>
     <string name="login.error_password">Password must be filled</string>
+    <string name="setting">Setting</string>
+    <string name="about">About</string>
+    <string name="sign_out">Sign Out</string>
 
 </resources>
