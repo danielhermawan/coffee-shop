@@ -14,6 +14,7 @@ import android.support.v7.app.AppCompatActivity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import co.folto.kopigo.R
 
 /**
@@ -24,6 +25,9 @@ fun ViewGroup.inflate(layoutId: Int): View
 
 fun View.showSnack(message: String, duration: Int = Snackbar.LENGTH_SHORT)
         = Snackbar.make(this, message, duration).show()
+
+fun Context.showToast(message: String, duration: Int = Toast.LENGTH_SHORT)
+        = Toast.makeText(this, message, duration).show()
 
 fun SwipeRefreshLayout.setDefaultColors(context: Context)
         = this.setColorSchemeColors(

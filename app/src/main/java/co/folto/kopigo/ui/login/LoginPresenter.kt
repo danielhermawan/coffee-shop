@@ -6,12 +6,13 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.subscribeBy
 import retrofit2.HttpException
 import timber.log.Timber
+import javax.inject.Inject
 
 /**
  * Created by Daniel on 6/14/2017 for Kopigo project.
  */
 
-class LoginPresenter (
+class LoginPresenter @Inject constructor(
         private val userRepository: UserRepository,
         private val view: LoginContract.View
 ) : LoginContract.Presenter {

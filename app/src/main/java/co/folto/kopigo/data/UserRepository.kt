@@ -3,8 +3,10 @@ package co.folto.kopigo.data
 import co.folto.kopigo.data.contract.UserContract
 import co.folto.kopigo.data.local.PreferenceHelper
 import co.folto.kopigo.data.model.LoginResponse
+import co.folto.kopigo.data.model.Product
 import co.folto.kopigo.data.remote.KopigoService
 import io.reactivex.Completable
+import io.reactivex.Flowable
 import io.reactivex.Single
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -14,9 +16,10 @@ import javax.inject.Singleton
  */
 @Singleton
 class UserRepository @Inject constructor(
-        private val kopigoService: KopigoService,
-        private val preferenceHelper: PreferenceHelper
+    private val kopigoService: KopigoService,
+    private val preferenceHelper: PreferenceHelper
 ): UserContract {
+
     /**
      * @return Status whether user is login or not
      */
@@ -34,6 +37,9 @@ class UserRepository @Inject constructor(
             .doOnComplete {
                 preferenceHelper.clear()
             }
+    }
 
+    override fun getUserProducts(): Flowable<List<Product>> {
+        return kopigoService.getUserProduct()
     }
 }

@@ -5,4 +5,5 @@ package co.folto.kopigo.util
  */
 object Constant {
     val API_URL = "http://kopigo.folto.co/api/"
+    val TOKEN_EXCEPTION = arrayOf("login")
 }

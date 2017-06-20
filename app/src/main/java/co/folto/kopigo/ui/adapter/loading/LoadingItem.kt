@@ -1,6 +1,6 @@
 package co.folto.kopigo.ui.adapter.loading
 
-import co.folto.gitfinder.util.adapter.AdapterConstant
+import co.folto.kopigo.ui.adapter.AdapterConstant
 import co.folto.kopigo.ui.adapter.base.ViewType
 
 /**

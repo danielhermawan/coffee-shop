@@ -11,7 +11,7 @@
     <string name="login.tnc">Terms and Condition and Privacy Policy</string>
 
     <!-- Main Activity -->
-    <string name="main.order">order</string>
+    <string name="order">order</string>
     <string name="main.stock">stock</string>
     <string name="main.manual">manual</string>
     <string name="main.promo">promo</string>

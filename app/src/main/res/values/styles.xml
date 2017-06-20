@@ -48,6 +48,13 @@
         <item name="android:textSize">@dimen/text_large</item>
     </style>
 
+    <style name="button_dark_brown">
+        <item name="android:background">@drawable/shape_button_dark_brown</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/text_large</item>
+    </style>
+
     <style name="toolbar_title">
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">@dimen/text_large</item>
@@ -66,6 +73,18 @@
     <style name="login_editText" parent="text_large.black">
         <item name="android:padding">@dimen/small_space</item>
         <item name="android:background">@null</item>
+    </style>
+    
+    <style name="button_operation">
+        <item name="android:scaleType">fitCenter</item>
+    </style>
+    
+    <style name="button_operation.plus">
+        <item name="android:background">@drawable/selector_button_operation_plus</item>
+    </style>
+
+    <style name="button_operation.minus">
+        <item name="android:background">@drawable/selector_button_operation_minus</item>
     </style>
 
 </resources>

@@ -18,6 +18,7 @@
         android:gravity="center_vertical">
 
         <LinearLayout
+            android:id="@+id/viewOrder"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -29,13 +30,13 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:src="@drawable/bitmap_order"
-                android:contentDescription="@string/main.order"/>
+                android:contentDescription="@string/order"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/medium_space"
-                android:text="@string/main.order"
+                android:text="@string/order"
                 android:textAllCaps="true"
                 android:textColor="@color/white"
                 android:textSize="@dimen/text_extra_large"/>

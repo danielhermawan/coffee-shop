@@ -7,14 +7,10 @@ import android.view.ViewGroup
 /**
  * Created by Daniel on 5/31/2017 for GitFInder project.
  */
-abstract class BaseAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(){
+abstract class BaseAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>(){
     protected var items: MutableList<ViewType> = ArrayList()
 
     abstract fun getAdapter(): SparseArrayCompat<ViewTypeDelegateAdapter>
-
-    abstract fun addData(datas: MutableList<ViewType>)
-
-    abstract fun refreshData(datas: MutableList<ViewType>)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder
             = getAdapter().get(viewType).onCreateViewHolder(parent)

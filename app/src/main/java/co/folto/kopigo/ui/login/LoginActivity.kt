@@ -23,7 +23,7 @@ import javax.inject.Inject
 class LoginActivity: AppCompatActivity(), LoginContract.View {
 
     @Inject
-    lateinit var presenter: LoginContract.Presenter
+    lateinit var presenter: LoginPresenter
 
     companion object {
         @JvmStatic fun newIntent(context: Context) = Intent(context, LoginActivity::class.java)

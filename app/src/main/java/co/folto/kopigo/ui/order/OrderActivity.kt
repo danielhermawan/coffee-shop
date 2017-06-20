@@ -1,0 +1,118 @@
+package co.folto.kopigo.ui.order
+
+import android.content.Context
+import android.content.Intent
+import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.DividerItemDecoration
+import android.support.v7.widget.LinearLayoutManager
+import android.view.Menu
+import android.view.MenuItem
+import android.view.View
+import co.folto.kopigo.KopigoApplication
+import co.folto.kopigo.R
+import co.folto.kopigo.data.model.Product
+import co.folto.kopigo.data.model.ProductCategory
+import co.folto.kopigo.ui.login.LoginActivity
+import co.folto.kopigo.util.showSnack
+import co.folto.kopigo.util.startNewActivitySession
+import kotlinx.android.synthetic.main.activity_order.*
+import kotlinx.android.synthetic.main.content_order.*
+import timber.log.Timber
+import javax.inject.Inject
+
+/**
+ * Created by Daniel on 6/19/2017 for Kopigo project.
+ */
+class OrderActivity: AppCompatActivity(), OrderContract.View {
+
+    //todo: change api to send category and products together instead seperated
+    //todo: change the data to one flow ie operation plus is resposible for presenter
+    //todo: save category and product to local database for cache
+    //todo: collpase bug
+    //todo: show snack when stock empty
+
+    @Inject
+    lateinit var presenter: OrderPresenter
+
+    companion object {
+        @JvmStatic fun newIntent(context: Context) = Intent(context, OrderActivity::class.java)
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_order)
+        DaggerOrderComponent.builder()
+                .dataComponent(KopigoApplication.dataComponent)
+                .orderModule(OrderModule(this))
+                .build()
+                .inject(this)
+        setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayShowHomeEnabled(true)
+        supportActionBar?.setDisplayShowTitleEnabled(false)
+        val linearLayoutManager = LinearLayoutManager(this)
+        val divider = DividerItemDecoration(this, DividerItemDecoration.VERTICAL)
+        //divider.setDrawable(resources.obtainDrawable(R.drawable.shape_brown_divider, this))
+        with(rvProducts) {
+            setHasFixedSize(true)
+            layoutManager = linearLayoutManager
+            rvProducts.addItemDecoration(divider)
+        }
+        presenter.subscribe();
+    }
+
+    /*override fun onStart() {
+        super.onStart()
+        presenter.subscribe();
+    }*/
+
+    override fun onDestroy() {
+        super.onStop()
+        presenter.unsubscribe()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_main, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.getItemId()) {
+            android.R.id.home -> {
+                onBackPressed()
+                return true
+            }
+            R.id.item_signout  -> {
+                presenter.logout()
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+
+    override fun showLoading(active: Boolean) {
+        if(active)
+            progress.visibility = View.VISIBLE
+        else
+            progress.visibility = View.GONE
+    }
+
+    override fun showMessage(message: String) {
+        parentView.showSnack(message)
+    }
+
+    override fun navigateToLogin() {
+        startNewActivitySession(LoginActivity.newIntent(this))
+    }
+
+    override fun showProduct(categories: MutableList<ProductCategory>, products: MutableList<Product>) {
+        val orderAdapter = OrderAdapter (products, categories){ presenter.makeOrder() }
+        rvProducts.adapter = orderAdapter
+    }
+
+    override fun navigateToSummary(products: List<Product>) {
+        Timber.d(products.count().toString() )
+    }
+}

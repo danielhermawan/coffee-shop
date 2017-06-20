@@ -31,6 +31,8 @@ class MainPresenter (
     }
 
     override fun logout() {
+        composite.clear()
+        view.showLoading(true)
         val request = userRepository.logout()
             .start()
             .subscribeBy(
@@ -41,6 +43,7 @@ class MainPresenter (
                 onError = {
                     Timber.e(it)
                     view.showMessage("There is some kind of network trouble")
+                    view.showLoading(false)
                 }
             )
         composite.add(request)

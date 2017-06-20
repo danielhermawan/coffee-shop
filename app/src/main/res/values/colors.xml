@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#292622</color>
+    <color name="colorPrimaryPressed">#424242</color>
     <color name="colorPrimaryDark">#1A1915</color>
     <color name="colorAccent">#bda865</color>
     <color name="dark">#808080</color>
@@ -8,7 +9,10 @@
     <color name="transparent_white">#80FFFFFF</color>
     <color name="black">#000000</color>
     <color name="light_brown">#bda865</color>
+    <color name="dark_brown">#5E4023</color>
     <color name="red">#f44336</color>
     <color name="green">#4caf50</color>
     <color name="blue">#2196f3</color>
+
+    <color name="order_background">#EAE2C5</color>
 </resources>

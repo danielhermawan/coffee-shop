@@ -18,4 +18,9 @@
 
     <dimen name="login_image_logo">120dp</dimen>
 
+    <dimen name="image_product">50dp</dimen>
+    
+    <dimen name="button_operation">25dp</dimen>
+    <dimen name="edit_width_operation">30dp</dimen>
+
 </resources>

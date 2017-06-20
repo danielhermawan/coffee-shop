@@ -53,6 +53,7 @@ dependencies {
     //Depedency for ui library
     compile 'de.hdodenhof:circleimageview:2.1.0'
     compile 'com.nightonke:boommenu:2.1.0'
+    compile 'com.github.aakira:expandable-layout:1.6.0@aar'
 
     //Depedency for dagger
     compile "com.google.dagger:dagger:$rootProject.daggerVersion"
@@ -62,7 +63,6 @@ dependencies {
     //Depedency for rxjava
     compile "io.reactivex.rxjava2:rxjava:$rootProject.rxjavaVersion"
     compile "io.reactivex.rxjava2:rxkotlin:$rootProject.rxkotlinVersion"
-    compile 'com.jakewharton.rxbinding2:rxbinding:2.0.0'
     compile "io.reactivex.rxjava2:rxandroid:$rootProject.rxandroidVersion"
 
     //Depedency for network library

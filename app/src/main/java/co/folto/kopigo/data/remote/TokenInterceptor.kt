@@ -11,8 +11,6 @@ import java.io.IOException
  */
 class TokenInterceptor(private val mPreference: PreferenceHelper) : Interceptor {
 
-    private val exception = arrayOf("login")
-
     @Throws(IOException::class)
     override fun intercept(chain: Interceptor.Chain): Response {
         val originalRequest = chain.request()
@@ -20,7 +18,7 @@ class TokenInterceptor(private val mPreference: PreferenceHelper) : Interceptor 
         val url = originalRequest.url().toString()
         val path = url.split(Constant.API_URL).dropLastWhile { it.isEmpty() }.toTypedArray()[1]
         val newRequest = originalRequest.newBuilder()
-        if (!exception.contains(path)) {
+        if (!Constant.TOKEN_EXCEPTION.contains(path)) {
             newRequest.addHeader("Authorization", "Bearer " + token)
         }
         return chain.proceed(newRequest.build())

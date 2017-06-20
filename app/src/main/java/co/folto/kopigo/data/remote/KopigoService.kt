@@ -1,10 +1,14 @@
 package co.folto.kopigo.data.remote
 
 import co.folto.kopigo.data.model.LoginResponse
+import co.folto.kopigo.data.model.Product
+import co.folto.kopigo.data.model.ProductCategory
 import io.reactivex.Completable
+import io.reactivex.Flowable
 import io.reactivex.Single
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
+import retrofit2.http.GET
 import retrofit2.http.POST
 
 /**
@@ -17,4 +21,10 @@ interface KopigoService {
 
     @POST("logout")
     fun logout(): Completable
+
+    @GET("category")
+    fun getCategories(): Flowable<List<ProductCategory>>
+
+    @GET("me/product")
+    fun getUserProduct(): Flowable<List<Product>>
 }

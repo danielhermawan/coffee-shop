@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context="co.folto.kopigo.PlaygroundActivity">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/accordianHeader"
+        android:clickable="true">
+        <TextView
+            android:id="@+id/accordian_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:textColor="#333"
+            android:textStyle="bold"
+            android:text="Title" />
+
+        <ImageButton
+            android:id="@+id/down_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_margin="8dp"
+            android:src="@android:drawable/arrow_down_float" />
+    </RelativeLayout>
+    <com.github.aakira.expandablelayout.ExpandableLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="14dp"
+        android:paddingRight="14dp"
+        android:paddingBottom="14dp"
+        android:orientation="vertical"
+        android:id="@+id/content"
+        app:ael_expanded="false"
+        app:ael_duration="500"
+        app:ael_orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Testing"
+            android:layout_gravity="center"/>
+    </com.github.aakira.expandablelayout.ExpandableLinearLayout>
+</LinearLayout>

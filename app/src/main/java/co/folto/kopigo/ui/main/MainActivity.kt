@@ -10,8 +10,10 @@ import android.view.View
 import co.folto.kopigo.KopigoApplication
 import co.folto.kopigo.R
 import co.folto.kopigo.ui.login.LoginActivity
+import co.folto.kopigo.ui.order.OrderActivity
 import co.folto.kopigo.util.startNewActivitySession
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.content_main.*
 import org.jetbrains.anko.toast
 import javax.inject.Inject
 
@@ -34,6 +36,9 @@ class MainActivity : AppCompatActivity(), MainContract.View {
                 .mainModule(MainModule(this))
                 .build()
                 .inject(this)
+        viewOrder.setOnClickListener {
+            startActivity(OrderActivity.newIntent(this))
+        }
     }
 
     override fun onStart() {
