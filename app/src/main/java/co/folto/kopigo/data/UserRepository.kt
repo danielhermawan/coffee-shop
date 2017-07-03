@@ -39,6 +39,10 @@ class UserRepository @Inject constructor(
             }
     }
 
+    override fun clearData() {
+        preferenceHelper.clear()
+    }
+
     override fun getUserProducts(): Flowable<List<Product>> {
         return kopigoService.getUserProduct()
     }

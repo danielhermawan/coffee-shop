@@ -19,6 +19,7 @@ import co.folto.kopigo.util.thoundsandSeperator
  */
 class SummaryDialog: DialogFragment() {
 
+    //todo: add title border bottom
     companion object {
         val EXTRA_PRODUCTS = "EXTRA PRODUCTS"
 

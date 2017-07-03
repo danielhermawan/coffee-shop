@@ -1,5 +1,6 @@
 package co.folto.kopigo.dagger.Component
 
+import co.folto.kopigo.KopigoApplication
 import co.folto.kopigo.dagger.module.ApplicationModule
 import co.folto.kopigo.dagger.module.LocalDataModule
 import co.folto.kopigo.dagger.module.RemoteDataModule
@@ -14,6 +15,8 @@ import javax.inject.Singleton
 @Singleton
 @Component(modules = arrayOf(ApplicationModule::class, LocalDataModule::class, RemoteDataModule::class))
 interface DataComponent {
+
+    fun inject(application: KopigoApplication)
 
     fun userRepository(): UserRepository
     fun productRepository(): ProductRepository

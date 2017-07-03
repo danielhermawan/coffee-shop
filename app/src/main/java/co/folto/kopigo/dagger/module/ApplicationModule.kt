@@ -3,6 +3,7 @@ package co.folto.kopigo.dagger.module
 import android.app.Application
 import android.content.Context
 import co.folto.gitfinder.injection.annotation.ApplicationContext
+import com.squareup.otto.Bus
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -21,5 +22,9 @@ class ApplicationModule(val application: Application) {
     @Singleton
     @ApplicationContext
     fun provideContext(): Context = application
+
+    @Provides
+    @Singleton
+    fun providesBus(): Bus = Bus()
 
 }

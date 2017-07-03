@@ -28,7 +28,7 @@ class LoginActivity: AppCompatActivity(), LoginContract.View {
     companion object {
         @JvmStatic fun newIntent(context: Context) = Intent(context, LoginActivity::class.java)
     }
-
+    //todo: add border bottom in edit username
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
