@@ -14,11 +14,11 @@ import co.folto.kopigo.R
 import co.folto.kopigo.data.model.Product
 import co.folto.kopigo.data.model.ProductCategory
 import co.folto.kopigo.ui.login.LoginActivity
+import co.folto.kopigo.ui.summaryOrder.SummaryActivity
 import co.folto.kopigo.util.showSnack
 import co.folto.kopigo.util.startNewActivitySession
 import kotlinx.android.synthetic.main.activity_order.*
 import kotlinx.android.synthetic.main.content_order.*
-import timber.log.Timber
 import javax.inject.Inject
 
 /**
@@ -31,6 +31,7 @@ class OrderActivity: AppCompatActivity(), OrderContract.View {
     //todo: save category and product to local database for cache
     //todo: collpase bug
     //todo: show snack when stock empty
+    //todo: Change nested to using other library like https://github.com/DevAhamed/MultiViewAdapter
 
     @Inject
     lateinit var presenter: OrderPresenter
@@ -113,6 +114,6 @@ class OrderActivity: AppCompatActivity(), OrderContract.View {
     }
 
     override fun navigateToSummary(products: List<Product>) {
-        Timber.d(products.count().toString() )
+        startActivity(SummaryActivity.newIntent(this, products as ArrayList<Product>))
     }
 }

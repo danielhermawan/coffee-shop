@@ -22,5 +22,15 @@
     <string name="setting">Setting</string>
     <string name="about">About</string>
     <string name="sign_out">Sign Out</string>
+    <string name="summary">Summary</string>
+
+
+    <string name="summary.add_more_item">Add More Item</string>
+    <string name="summary_payment_details">Payment Details</string>
+    <string name="summary_checkout">checkout</string>
+    <string name="summary.total_price">TOTAL PRICE</string>
+    <string name="summary.print_out">Print Out</string>
+    <string name="summary.cancel">Cancel</string>
+    <string name="summary.items">Items</string>
 
 </resources>

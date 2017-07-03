@@ -8,10 +8,10 @@ import android.view.ViewGroup
 import co.folto.kopigo.R
 import co.folto.kopigo.data.model.Product
 import co.folto.kopigo.data.model.ProductCategory
-import co.folto.kopigo.ui.adapter.ProductAdapter
 import co.folto.kopigo.ui.adapter.base.ViewType
 import co.folto.kopigo.ui.adapter.base.ViewTypeDelegateAdapter
 import co.folto.kopigo.ui.adapter.util.CustomLinearLayoutManager
+import co.folto.kopigo.ui.order.ProductAdapter
 import co.folto.kopigo.util.inflate
 import co.folto.kopigo.util.obtainDrawable
 import kotlinx.android.synthetic.main.item_category.view.*
@@ -43,15 +43,7 @@ class CategoryDelegateAdapter(val products: MutableList<Product>): ViewTypeDeleg
                 layoutManager = linearLayoutManager
                 rvProducts.addItemDecoration(divider)
             }
-        }
-
-        fun bind(category: ProductCategory, products: MutableList<Product>) {
-            val newProduct = products.filter { it.category.id == category.id }
-                    .sortedBy { it.name }
-                    .toMutableList()
-            productAdapter.refreshData(newProduct)
             with(itemView) {
-                textCategory.text = category.name
                 viewHeader.setOnClickListener {
                     expandPanel.toggle()
                     if(!expandPanel.isExpanded)
@@ -60,6 +52,14 @@ class CategoryDelegateAdapter(val products: MutableList<Product>): ViewTypeDeleg
                         buttonDropdown.setImageDrawable(resources.obtainDrawable(R.drawable.ic_arrow_down, context))
                 }
             }
+        }
+
+        fun bind(category: ProductCategory, products: MutableList<Product>) {
+            val newProduct = products.filter { it.category.id == category.id }
+                    .sortedBy { it.name }
+                    .toMutableList()
+            productAdapter.refreshData(newProduct)
+            itemView.textCategory.text = category.name
         }
     }
 }

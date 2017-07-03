@@ -1,4 +1,4 @@
-package co.folto.kopigo.ui.adapter
+package co.folto.kopigo.ui.order
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -10,9 +10,9 @@ import co.folto.kopigo.data.model.Product
 import co.folto.kopigo.util.inflate
 import co.folto.kopigo.util.loadNetworkImage
 import co.folto.kopigo.util.showToast
+import co.folto.kopigo.util.thoundsandSeperator
 import com.bumptech.glide.request.RequestOptions
 import kotlinx.android.synthetic.main.item_product.view.*
-
 
 /**
  * Created by Daniel on 6/20/2017 for Kopigo project.
@@ -45,7 +45,7 @@ class ProductAdapter: RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() {
             with(itemView) {
                 imageProduct.loadNetworkImage(context, product.imageUrl, options = RequestOptions().circleCrop())
                 textProduct.text = product.name.capitalize()
-                textPrice.text = "IDR ${product.price}"
+                textPrice.text = "IDR ${product.price.thoundsandSeperator()}"
                 editQuantity.text = "" + product.orderQuantity
                 buttonMinus.setOnClickListener {
                     if(product.orderQuantity > 0 ) {

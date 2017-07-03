@@ -8,6 +8,10 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="AppTheme.brown_theme">
+        <item name="android:windowBackground">@color/brown_background</item>
+    </style>
+
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
@@ -85,6 +89,12 @@
 
     <style name="button_operation.minus">
         <item name="android:background">@drawable/selector_button_operation_minus</item>
+    </style>
+
+    <style name="summary_black_header" parent="text_large.white">
+        <item name="android:background">@color/colorPrimaryDark</item>
+        <item name="android:padding">@dimen/medium_space</item>
+        <item name="android:textAllCaps">true</item>
     </style>
 
 </resources>

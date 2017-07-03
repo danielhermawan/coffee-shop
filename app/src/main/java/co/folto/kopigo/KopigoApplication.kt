@@ -18,6 +18,7 @@ class KopigoApplication: Application() {
         @JvmStatic lateinit var dataComponent: DataComponent
     }
     //todo: Make event logout when unautheticate
+    //todo: Make Logout faster
     override fun onCreate() {
         super.onCreate()
         if (BuildConfig.DEBUG) {

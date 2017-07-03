@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/small_space"
+                android:paddingBottom="@dimen/small_space"
+                android:paddingLeft="@dimen/medium_space"
+                android:paddingRight="@dimen/medium_space"
+                android:background="#D7C396"
+                android:baselineAligned="false">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:text="@string/summary.total_price"
+        android:textStyle="bold"
+        style="@style/text_large.black"/>
+    <TextView
+        android:id="@+id/textTotal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:textStyle="bold"
+        style="@style/text_large.black"
+        tools:text="IDR 288,000"/>
+</RelativeLayout>

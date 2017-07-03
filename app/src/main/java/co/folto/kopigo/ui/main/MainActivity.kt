@@ -26,6 +26,7 @@ class MainActivity : AppCompatActivity(), MainContract.View {
         @JvmStatic fun newIntent(context: Context) = Intent(context, MainActivity::class.java)
     }
 
+    //todo: Logout directly without go to server
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)

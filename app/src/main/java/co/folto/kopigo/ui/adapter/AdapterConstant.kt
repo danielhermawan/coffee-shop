@@ -8,4 +8,6 @@ object AdapterConstant {
     val CATEGORY = 2
     val PRODUCT = 3
     val ORDER_FOOTER = 4
+    val PAYMENT = 5
+    val TOTAL = 6
 }

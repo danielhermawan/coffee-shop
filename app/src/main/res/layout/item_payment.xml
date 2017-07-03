@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="@dimen/small_space"
+    android:paddingBottom="@dimen/small_space"
+    android:paddingLeft="@dimen/medium_space"
+    android:paddingRight="@dimen/medium_space"
+    android:baselineAligned="false">
+    <TextView
+        android:id="@+id/textProduct"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        style="@style/text_large.black"
+        tools:text="Drip Coffee88 Pack (3), Original"/>
+    <TextView
+        android:id="@+id/textPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        style="@style/text_large.black"
+        tools:text="IDR 288,000"/>
+</RelativeLayout>

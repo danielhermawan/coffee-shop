@@ -11,8 +11,10 @@
     <color name="light_brown">#bda865</color>
     <color name="dark_brown">#5E4023</color>
     <color name="red">#f44336</color>
+    <color name="red_darker">#c62828</color>
     <color name="green">#4caf50</color>
+    <color name="green_dark">#2e7d32</color>
     <color name="blue">#2196f3</color>
 
-    <color name="order_background">#EAE2C5</color>
+    <color name="brown_background">#EAE2C5</color>
 </resources>

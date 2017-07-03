@@ -9,10 +9,11 @@
 
     <dimen name="text_small">10sp</dimen>
     <dimen name="text_medium">14sp</dimen>
-    <dimen name="text_large">18sp</dimen>
+    <dimen name="text_large">17sp</dimen>
     <dimen name="text_extra_large">24sp</dimen>
 
     <dimen name="shape_button_radius">6dp</dimen>
+    <dimen name="shape_dialog_radius">4dp</dimen>
 
     <dimen name="item_progressbar">40dp</dimen>
 
@@ -22,5 +23,6 @@
     
     <dimen name="button_operation">25dp</dimen>
     <dimen name="edit_width_operation">30dp</dimen>
+    <dimen name="summary_button">180dp</dimen>
 
 </resources>

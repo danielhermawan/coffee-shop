@@ -24,6 +24,7 @@
         </activity>
         <activity android:name=".ui.login.LoginActivity"/>
         <activity android:name=".ui.order.OrderActivity"/>
+        <activity android:name=".ui.summaryOrder.SummaryActivity" android:theme="@style/AppTheme.brown_theme"/>
         <activity android:name=".PlaygroundActivity">
 
         </activity>
