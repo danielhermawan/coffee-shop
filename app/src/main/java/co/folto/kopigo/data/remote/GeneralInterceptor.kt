@@ -11,7 +11,7 @@ import javax.inject.Singleton
  * Created by Daniel on 6/14/2017 for Kopigo project.
  */
 @Singleton
-class GeneralInterceptor@Inject constructor(
+class GeneralInterceptor @Inject constructor(
     private val bus: Bus
 ): Interceptor{
     override fun intercept(chain: Interceptor.Chain): Response {

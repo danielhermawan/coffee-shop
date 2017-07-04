@@ -47,17 +47,18 @@ class RemoteDataModule {
 
     @Provides
     @Singleton
-    fun provideOkhttpClient(cache: Cache, preferenceHelper: PreferenceHelper): OkHttpClient {
+    fun provideOkhttpClient(generalInterceptor: GeneralInterceptor, cache: Cache, preferenceHelper: PreferenceHelper): OkHttpClient {
         val client = OkHttpClient().newBuilder().cache(cache)
-        client.addInterceptor(GeneralInterceptor())
+        client.addInterceptor(generalInterceptor)
+                .addInterceptor(TokenInterceptor(preferenceHelper))
         if (BuildConfig.DEBUG){
             val logging = HttpLoggingInterceptor(object : HttpLoggingInterceptor.Logger {
                 override fun log(message: String) {
                     Timber.tag("OkHttp").d(message)
                 }
             })
-            client.addInterceptor(logging).addNetworkInterceptor(StethoInterceptor())
-                    .addInterceptor(TokenInterceptor(preferenceHelper))
+            client.addInterceptor(logging)
+                    .addNetworkInterceptor(StethoInterceptor())
         }
         return client.build()
     }
