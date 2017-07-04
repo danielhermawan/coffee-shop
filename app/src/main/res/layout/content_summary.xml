@@ -1,22 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="?attr/actionBarSize"
-            android:fillViewport="true">
-    <LinearLayout
-        android:orientation="vertical"
+<android.support.v4.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?attr/actionBarSize"
+        android:fillViewport="true">
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
+            android:id="@+id/textSummary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
             android:text="@string/summary"
             style="@style/summary_black_header"/>
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rvSummary"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textSummary"/>
        <!-- <Button
             android:id="@+id/buttonAdd"
             android:layout_width="@dimen/summary_button"
@@ -28,23 +31,27 @@
             android:text="@string/summary.add_more_item"
             style="@style/Widget.AppCompat.Button.Colored"/>-->
         <TextView
+            android:id="@+id/textPaymentDetail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@id/rvSummary"
             android:layout_marginTop="@dimen/medium_space"
             android:text="@string/summary_payment_details"
             style="@style/summary_black_header"/>
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rvPayment"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textPaymentDetail"/>
         <Button
             android:id="@+id/buttonCheckout"
             android:layout_width="@dimen/summary_button"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
             android:layout_marginTop="@dimen/medium_space"
+            android:layout_below="@id/rvPayment"
+            android:layout_centerHorizontal="true"
             android:padding="@dimen/medium_space"
             android:text="@string/summary_checkout"
             style="@style/Widget.AppCompat.Button.Colored"/>
-    </LinearLayout>
+    </RelativeLayout>
 </android.support.v4.widget.NestedScrollView>
