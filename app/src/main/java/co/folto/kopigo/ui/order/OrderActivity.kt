@@ -3,7 +3,6 @@ package co.folto.kopigo.ui.order
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
 import android.view.Menu
@@ -13,6 +12,7 @@ import co.folto.kopigo.KopigoApplication
 import co.folto.kopigo.R
 import co.folto.kopigo.data.model.Product
 import co.folto.kopigo.data.model.ProductCategory
+import co.folto.kopigo.ui.base.BaseActivity
 import co.folto.kopigo.ui.login.LoginActivity
 import co.folto.kopigo.ui.summaryOrder.SummaryActivity
 import co.folto.kopigo.util.showSnack
@@ -24,7 +24,7 @@ import javax.inject.Inject
 /**
  * Created by Daniel on 6/19/2017 for Kopigo project.
  */
-class OrderActivity: AppCompatActivity(), OrderContract.View {
+class OrderActivity: BaseActivity(), OrderContract.View {
 
     //todo: change api to send category and products together instead seperated
     //todo: change the data to one flow ie operation plus is resposible for presenter
@@ -32,6 +32,7 @@ class OrderActivity: AppCompatActivity(), OrderContract.View {
     //todo: collpase bug
     //todo: show snack when stock empty
     //todo: Change nested to using other library like https://github.com/DevAhamed/MultiViewAdapter
+    //todo: persist presenter
 
     @Inject
     lateinit var presenter: OrderPresenter

@@ -15,10 +15,9 @@ allprojects {
     repositories {
         jcenter()
         mavenCentral()
-        maven {
-            url 'https://github.com/uPhyca/stetho-realm/raw/master/maven-repo'
-        }
+        maven { url 'https://github.com/uPhyca/stetho-realm/raw/master/maven-repo' }
         maven { url 'https://maven.google.com' }
+        maven {url "https://clojars.org/repo/"}
     }
 }
 
@@ -37,6 +36,7 @@ ext {
     kotlinVersion = '1.1.2-4'
     ankoversion = '0.10.1'
     jodaTime = "2.9.9"
+    icepick = "3.2.0"
     androidComponent = '1.0.0-alpha1'
     supportLibraryVersion = '25.3.1'
     constraintLayout = '1.0.2'

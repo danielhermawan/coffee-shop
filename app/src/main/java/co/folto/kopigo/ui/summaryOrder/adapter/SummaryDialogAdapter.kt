@@ -16,8 +16,8 @@ class SummaryDialogAdapter(var products: MutableList<Product>): RecyclerView.Ada
 
     override fun getItemCount(): Int = products.size
 
-    override fun onBindViewHolder(holder: PlaceHolder?, position: Int) {
-        holder?.bind(products[position])
+    override fun onBindViewHolder(holder: PlaceHolder, position: Int) {
+        holder.bind(products[position])
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PlaceHolder {

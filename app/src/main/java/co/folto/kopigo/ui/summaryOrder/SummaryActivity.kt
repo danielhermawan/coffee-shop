@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
+import android.view.MenuItem
 import android.view.View
 import co.folto.kopigo.KopigoApplication
 import co.folto.kopigo.R
@@ -57,6 +58,7 @@ class SummaryActivity: AppCompatActivity(), SummaryContract.View {
             layoutManager = linearLayoutManager
             addItemDecoration(divider)
         }
+        rvSummary.setNestedScrollingEnabled(false)
         val linearPayment = LinearLayoutManager(this)
         val dividerPayment = DividerItemDecoration(this, DividerItemDecoration.VERTICAL)
         dividerPayment.setDrawable(resources.obtainDrawable(R.drawable.shape_brown_divider, this))
@@ -65,13 +67,24 @@ class SummaryActivity: AppCompatActivity(), SummaryContract.View {
             layoutManager = linearPayment
             addItemDecoration(dividerPayment)
         }
-        presenter.subscribe()
+        rvPayment.setNestedScrollingEnabled(false)
         buttonCheckout.setOnClickListener { presenter.checkout() }
+        presenter.subscribe()
     }
 
     override fun onDestroy() {
         super.onStop()
         presenter.unsubscribe()
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.getItemId()) {
+            android.R.id.home -> {
+                onBackPressed()
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     override fun showLoading(active: Boolean) {
@@ -97,7 +110,7 @@ class SummaryActivity: AppCompatActivity(), SummaryContract.View {
 
     override fun openSummaryDialog(products: MutableList<Product>) {
         SummaryDialog.newInstance(products as ArrayList<Product>).show(fragmentManager, "Summary Dialog")
-}
+    }
 
     override fun navigateToHome() {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.

@@ -84,6 +84,9 @@ dependencies {
     compile "com.jakewharton.timber:timber:$rootProject.timberVersion"
     compile "joda-time:joda-time:$rootProject.jodaTime"
 
+    compile "frankiesardo:icepick:$rootProject.icepick"
+    provided "frankiesardo:icepick-processor:$rootProject.icepick"
+
     debugCompile "com.squareup.leakcanary:leakcanary-android:$rootProject.leakCanaryVersion"
     releaseCompile "com.squareup.leakcanary:leakcanary-android-no-op:$rootProject.leakCanaryVersion"
     testCompile "com.squareup.leakcanary:leakcanary-android-no-op:$rootProject.leakCanaryVersion"
