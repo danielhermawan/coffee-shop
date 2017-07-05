@@ -20,18 +20,19 @@ import kotlinx.android.synthetic.main.item_category.view.*
 /**
  * Created by Daniel on 6/20/2017 for Kopigo project.
  */
-class CategoryDelegateAdapter(val products: MutableList<Product>): ViewTypeDelegateAdapter {
+class CategoryDelegateAdapter(val products: MutableList<Product>, val onModified: (Int, Int) -> Unit)
+    : ViewTypeDelegateAdapter {
     override fun onCreateViewHolder(parent: ViewGroup): RecyclerView.ViewHolder
-        = CategoryViewHolder(parent.inflate(R.layout.item_category), parent.context)
+        = CategoryViewHolder(parent.inflate(R.layout.item_category), parent.context, onModified)
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, item: ViewType) {
         holder as CategoryViewHolder
         holder.bind(item as ProductCategory, products)
     }
 
-    class CategoryViewHolder(val view: View, val context: Context): RecyclerView.ViewHolder(view) {
+    class CategoryViewHolder(val view: View, val context: Context, val onModified: (Int, Int) -> Unit): RecyclerView.ViewHolder(view) {
 
-        private val productAdapter = ProductAdapter()
+        private val productAdapter = ProductAdapter(onModified)
 
         init {
             val linearLayoutManager = CustomLinearLayoutManager(context)

@@ -9,7 +9,6 @@ import co.folto.kopigo.R
 import co.folto.kopigo.data.model.Product
 import co.folto.kopigo.util.inflate
 import co.folto.kopigo.util.loadNetworkImage
-import co.folto.kopigo.util.showToast
 import co.folto.kopigo.util.thoundsandSeperator
 import com.bumptech.glide.request.RequestOptions
 import kotlinx.android.synthetic.main.item_product.view.*
@@ -17,13 +16,13 @@ import kotlinx.android.synthetic.main.item_product.view.*
 /**
  * Created by Daniel on 6/20/2017 for Kopigo project.
  */
-class ProductAdapter: RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() {
+class ProductAdapter(val onModified: (Int, Int) -> Unit): RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() {
 
     private var products: MutableList<Product> = ArrayList<Product>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductViewHolder {
         val view = parent.inflate(R.layout.item_product)
-        return ProductViewHolder(view, parent.context)
+        return ProductViewHolder(view, parent.context, onModified)
     }
 
     override fun onBindViewHolder(holder: ProductViewHolder?, position: Int) {
@@ -38,7 +37,8 @@ class ProductAdapter: RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() {
         notifyDataSetChanged()
     }
 
-    class ProductViewHolder(val view: View, val context: Context): RecyclerView.ViewHolder(view) {
+    class ProductViewHolder(val view: View, val context: Context, val onModified: (Int, Int) -> Unit)
+        : RecyclerView.ViewHolder(view) {
 
         @SuppressLint("SetTextI18n")
         fun bind(product: Product) {
@@ -48,18 +48,12 @@ class ProductAdapter: RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() {
                 textPrice.text = "IDR ${product.price.thoundsandSeperator()}"
                 editQuantity.text = "" + product.orderQuantity
                 buttonMinus.setOnClickListener {
-                    if(product.orderQuantity > 0 ) {
-                        product.orderQuantity -= 1
-                        editQuantity.setText("" + product.orderQuantity)
-                    }
+                    onModified(product.id, -1)
+                    editQuantity.setText("" + product.orderQuantity)
                 }
                 buttonPlus.setOnClickListener {
-                    if(product.orderQuantity < product.quantity) {
-                        product.orderQuantity += 1
-                        editQuantity.setText("" + product.orderQuantity)
-                    }
-                    else
-                        context.showToast("Stock barang ini sudah habis")
+                    onModified(product.id, 1)
+                    editQuantity.setText("" + product.orderQuantity)
                 }
             }
         }

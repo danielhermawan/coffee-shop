@@ -1,19 +1,24 @@
 package co.folto.kopigo.data.model
 
+import android.arch.persistence.room.Entity
+import android.arch.persistence.room.Ignore
+import android.arch.persistence.room.PrimaryKey
 import android.os.Parcel
 import android.os.Parcelable
 import co.folto.kopigo.ui.adapter.AdapterConstant
 import co.folto.kopigo.ui.adapter.base.ViewType
 
+@Entity
 data class Product(
-    var id: Int = 0,
+    @PrimaryKey var id: Int = 0,
     var name: String = "",
     var price: Int = 0,
     var imageUrl: String = "",
     var quantity: Int = 0,
-    var orderQuantity: Int = 0,
+    @Ignore var orderQuantity: Int = 0,
     var category: ProductCategory = ProductCategory()
 ): ViewType, Parcelable {
+
     override fun getViewType(): Int = AdapterConstant.PRODUCT
 
     companion object {

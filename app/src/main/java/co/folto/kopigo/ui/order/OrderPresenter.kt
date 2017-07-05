@@ -4,6 +4,7 @@ import co.folto.kopigo.data.ProductRepository
 import co.folto.kopigo.data.UserRepository
 import co.folto.kopigo.data.model.Product
 import co.folto.kopigo.data.model.ProductCategory
+import co.folto.kopigo.util.replace
 import co.folto.kopigo.util.start
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.Flowables
@@ -73,6 +74,20 @@ class OrderPresenter @Inject constructor(
                 }
             )
         composite.add(request)
+    }
+
+    override fun modifyProduct(id: Int, qty: Int) {
+        val product = products.find { it.id == id }
+        if(product != null){
+            if(product.orderQuantity > 0 && qty < 0)
+                product.orderQuantity += qty
+            if(qty > 0)
+                if(product.orderQuantity < product.quantity)
+                    product.orderQuantity += qty
+                else
+                    view.showMessage("Stock ${product.name} sudah habis")
+            products.replace(product)
+        }
     }
 
     override fun makeOrder() {

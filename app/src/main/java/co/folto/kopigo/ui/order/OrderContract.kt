@@ -21,5 +21,6 @@ interface OrderContract {
         fun logout()
         fun loadProductAndCategory()
         fun makeOrder()
+        fun modifyProduct(id: Int, qty: Int)
     }
 }

@@ -15,7 +15,7 @@ import java.util.*
  * Created by Daniel on 6/19/2017 for Kopigo project.
  */
 class OrderAdapter(var products: MutableList<Product>, var categories: MutableList<ProductCategory>,
-                   val orderClick: () -> Unit): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+                   val orderClick: () -> Unit, val onModified: (Int, Int) -> Unit): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     protected var items: MutableList<ViewType> = ArrayList()
 
@@ -24,7 +24,7 @@ class OrderAdapter(var products: MutableList<Product>, var categories: MutableLi
 
     init {
         //delegateAdapter.put(AdapterConstant.PRODUCT, ProductDelegateAdapter())
-        delegateAdapter.put(AdapterConstant.CATEGORY, CategoryDelegateAdapter(products))
+        delegateAdapter.put(AdapterConstant.CATEGORY, CategoryDelegateAdapter(products, onModified))
         delegateAdapter.put(AdapterConstant.ORDER_FOOTER, OrderFooterDelegateAdapter(orderClick))
         items = categories.toMutableList()
         items.add(orderFooter)

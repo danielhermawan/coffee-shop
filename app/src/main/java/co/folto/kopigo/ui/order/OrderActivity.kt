@@ -27,10 +27,7 @@ import javax.inject.Inject
 class OrderActivity: BaseActivity(), OrderContract.View {
 
     //todo: change api to send category and products together instead seperated
-    //todo: change the data to one flow ie operation plus is resposible for presenter
     //todo: save category and product to local database for cache
-    //todo: collpase bug
-    //todo: show snack when stock empty
     //todo: Change nested to using other library like https://github.com/DevAhamed/MultiViewAdapter
     //todo: persist presenter
 
@@ -111,7 +108,12 @@ class OrderActivity: BaseActivity(), OrderContract.View {
     }
 
     override fun showProduct(categories: MutableList<ProductCategory>, products: MutableList<Product>) {
-        val orderAdapter = OrderAdapter (products, categories){ presenter.makeOrder() }
+        val orderAdapter = OrderAdapter (
+            products,
+            categories,
+            { presenter.makeOrder() },
+            { id, qty -> presenter.modifyProduct(id, qty) }
+        )
         rvProducts.adapter = orderAdapter
     }
 
