@@ -61,6 +61,7 @@ class OrderActivity: BaseActivity(), OrderContract.View {
             layoutManager = linearLayoutManager
             rvProducts.addItemDecoration(divider)
         }
+        rvProducts.setNestedScrollingEnabled(false)
         presenter.subscribe();
     }
 

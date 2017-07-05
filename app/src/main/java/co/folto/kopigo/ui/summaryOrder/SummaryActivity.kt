@@ -37,7 +37,7 @@ class SummaryActivity: AppCompatActivity(), SummaryContract.View {
             return i
         }
     }
-
+    //todo: add button
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_summary)
