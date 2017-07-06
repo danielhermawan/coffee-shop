@@ -1,5 +1,6 @@
 package co.folto.kopigo.data.model
 
+import android.arch.persistence.room.Embedded
 import android.arch.persistence.room.Entity
 import android.arch.persistence.room.Ignore
 import android.arch.persistence.room.PrimaryKey
@@ -9,14 +10,14 @@ import co.folto.kopigo.ui.adapter.AdapterConstant
 import co.folto.kopigo.ui.adapter.base.ViewType
 
 @Entity
-data class Product(
+class Product(
     @PrimaryKey var id: Int = 0,
     var name: String = "",
     var price: Int = 0,
     var imageUrl: String = "",
     var quantity: Int = 0,
     @Ignore var orderQuantity: Int = 0,
-    var category: ProductCategory = ProductCategory()
+    @Embedded(prefix = "category_") var category: ProductCategory = ProductCategory()
 ): ViewType, Parcelable {
 
     override fun getViewType(): Int = AdapterConstant.PRODUCT

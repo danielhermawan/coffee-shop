@@ -37,7 +37,7 @@ ext {
     ankoversion = '0.10.1'
     jodaTime = "2.9.9"
     icepick = "3.2.0"
-    androidComponent = '1.0.0-alpha1'
+    androidComponent = '1.0.0-alpha3'
     supportLibraryVersion = '25.3.1'
     constraintLayout = '1.0.2'
     daggerVersion = '2.11-rc2'

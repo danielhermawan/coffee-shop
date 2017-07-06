@@ -1,6 +1,7 @@
 package co.folto.kopigo.data
 
 import co.folto.kopigo.data.contract.UserContract
+import co.folto.kopigo.data.local.DatabaseService
 import co.folto.kopigo.data.local.PreferenceHelper
 import co.folto.kopigo.data.model.LoginResponse
 import co.folto.kopigo.data.model.Product
@@ -17,7 +18,8 @@ import javax.inject.Singleton
 @Singleton
 class UserRepository @Inject constructor(
     private val kopigoService: KopigoService,
-    private val preferenceHelper: PreferenceHelper
+    private val preferenceHelper: PreferenceHelper,
+    private val databaseService: DatabaseService
 ): UserContract {
 
     /**
@@ -45,5 +47,6 @@ class UserRepository @Inject constructor(
 
     override fun getUserProducts(): Flowable<List<Product>> {
         return kopigoService.getUserProduct()
+                .doOnNext { databaseService.saveProducts(it) }
     }
 }
