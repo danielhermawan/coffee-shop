@@ -46,7 +46,10 @@ class UserRepository @Inject constructor(
     }
 
     override fun getUserProducts(): Flowable<List<Product>> {
-        return kopigoService.getUserProduct()
+        val apiSource = kopigoService.getUserProduct()
                 .doOnNext { databaseService.saveProducts(it) }
+        val databaseSource = databaseService.getProducts()
+        //return Flowable.concat(databaseSource, apiSource)
+        return apiSource
     }
 }

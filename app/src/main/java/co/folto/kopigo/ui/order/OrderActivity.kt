@@ -26,10 +26,11 @@ import javax.inject.Inject
  */
 class OrderActivity: BaseActivity(), OrderContract.View {
 
-    //todo: change api to send category and products together instead seperated
     //todo: save category and product to local database for cache
     //todo: Change nested to using other library like https://github.com/DevAhamed/MultiViewAdapter
     //todo: persist presenter
+    //todo: add order and close status
+    //todo: make all data in presenter become immutable
 
     @Inject
     lateinit var presenter: OrderPresenter

@@ -7,7 +7,6 @@ import co.folto.kopigo.data.model.ProductCategory
 import co.folto.kopigo.util.replace
 import co.folto.kopigo.util.start
 import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.rxkotlin.Flowables
 import io.reactivex.rxkotlin.subscribeBy
 import timber.log.Timber
 import java.util.*
@@ -54,16 +53,13 @@ class OrderPresenter @Inject constructor(
     }
 
     override fun loadProductAndCategory() {
-        val categoryObser = productRepository.getProductCategories()
-        val productObser = userRepository.getUserProducts()
         view.showLoading(true)
-        val request = Flowables
-            .zip(categoryObser, productObser) {category, product -> Pair(category, product)}
+        val request = userRepository.getUserProducts()
             .start()
             .subscribeBy(
                 {
-                    products = it.second.toMutableList()
-                    categories = it.first.toMutableList()
+                    products = it.toMutableList()
+                    categories = products.map { it.category }.distinctBy { it.id }.toMutableList()
                     view.showProduct(categories, products)
                     view.showLoading(false)
                 },

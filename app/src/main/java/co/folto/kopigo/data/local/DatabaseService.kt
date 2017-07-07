@@ -3,6 +3,7 @@ package co.folto.kopigo.data.local
 import co.folto.kopigo.data.model.Product
 import co.folto.kopigo.data.model.ProductCategory
 import io.reactivex.Completable
+import io.reactivex.Flowable
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -20,4 +21,6 @@ class DatabaseService @Inject constructor(private val db: AppDatabase){
         db.productDao().insertAll(*products.toTypedArray())
         return Completable.complete()
     }
+
+    fun getProducts(): Flowable<List<Product>> = db.productDao().getAll()
 }
