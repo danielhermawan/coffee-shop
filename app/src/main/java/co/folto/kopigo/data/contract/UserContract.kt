@@ -13,7 +13,7 @@ interface UserContract {
     fun login(username: String, password: String): Single<LoginResponse>
     fun logout(): Completable
     fun checkLoginStatus(): Boolean
-    fun clearData()
+    fun clearData(): Completable
 
     fun getUserProducts(): Flowable<List<Product>>
 }

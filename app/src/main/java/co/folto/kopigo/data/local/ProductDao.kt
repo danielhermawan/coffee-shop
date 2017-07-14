@@ -17,4 +17,7 @@ interface ProductDao {
 
     @Query("SELECT * FROM product")
     fun getAll(): Flowable<List<Product>>
+
+    @Query("DELETE FROM product")
+    fun clear()
 }

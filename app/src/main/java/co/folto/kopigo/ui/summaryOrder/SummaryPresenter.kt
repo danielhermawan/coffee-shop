@@ -1,7 +1,9 @@
 package co.folto.kopigo.ui.summaryOrder
 
+import co.folto.kopigo.data.OrderRepository
 import co.folto.kopigo.data.model.Product
 import co.folto.kopigo.util.replace
+import co.folto.kopigo.util.start
 import io.reactivex.disposables.CompositeDisposable
 import timber.log.Timber
 import javax.inject.Inject
@@ -11,7 +13,8 @@ import javax.inject.Inject
  */
 class SummaryPresenter @Inject constructor(
     private var products: MutableList<Product>,
-    private val view: SummaryContract.View
+    private val view: SummaryContract.View,
+    private val orderRepository: OrderRepository
 ): SummaryContract.Presenter {
 
     private var composite = CompositeDisposable()
@@ -46,6 +49,23 @@ class SummaryPresenter @Inject constructor(
 
     override fun checkout() {
         view.openSummaryDialog(products)
+    }
+
+    override fun print() {
+        view.showLoading(true)
+        val request = orderRepository.createOrder(products)
+            .start()
+            .subscribe(
+                {
+                    view.navigateToHome()
+                },
+                {
+                    Timber.e(it)
+                    view.showLoading(false)
+                    view.showSnack("There is some kind of network trouble")
+                }
+            )
+        composite.add(request)
     }
 
     override fun addMoreItem() {

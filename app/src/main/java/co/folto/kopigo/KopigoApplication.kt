@@ -46,10 +46,11 @@ class KopigoApplication: Application() {
 
     @Subscribe
     fun onAuthenticationError(event: BusEvent.AuthenticationError) {
-        userRepository.clearData()
-        showToast("Your session expired")
-        val intent = LoginActivity.newIntent(this)
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
-        startActivity(intent)
+        userRepository.clearData().subscribe {
+            showToast("Your session expired")
+            val intent = LoginActivity.newIntent(this)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+            startActivity(intent)
+        }
     }
 }

@@ -1,15 +1,13 @@
 package co.folto.kopigo.data.remote
 
 import co.folto.kopigo.data.model.LoginResponse
+import co.folto.kopigo.data.model.OrderRequest
 import co.folto.kopigo.data.model.Product
 import co.folto.kopigo.data.model.ProductCategory
 import io.reactivex.Completable
 import io.reactivex.Flowable
 import io.reactivex.Single
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
-import retrofit2.http.GET
-import retrofit2.http.POST
+import retrofit2.http.*
 
 /**
  * Created by Daniel on 6/12/2017 for Kopigo project.
@@ -27,4 +25,7 @@ interface KopigoService {
 
     @GET("me/product")
     fun getUserProduct(): Flowable<List<Product>>
+
+    @POST("order")
+    fun createOrder(@Body products: OrderRequest): Completable
 }

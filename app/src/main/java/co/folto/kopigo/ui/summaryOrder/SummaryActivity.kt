@@ -11,10 +11,13 @@ import android.view.View
 import co.folto.kopigo.KopigoApplication
 import co.folto.kopigo.R
 import co.folto.kopigo.data.model.Product
+import co.folto.kopigo.ui.main.MainActivity
 import co.folto.kopigo.ui.summaryOrder.adapter.PaymentAdapter
 import co.folto.kopigo.ui.summaryOrder.adapter.SummaryAdapter
 import co.folto.kopigo.util.obtainDrawable
 import co.folto.kopigo.util.showSnack
+import co.folto.kopigo.util.showToast
+import co.folto.kopigo.util.startNewActivitySession
 import kotlinx.android.synthetic.main.activity_summary.*
 import kotlinx.android.synthetic.main.content_summary.*
 import timber.log.Timber
@@ -23,7 +26,7 @@ import javax.inject.Inject
 /**
  * Created by Daniel on 6/20/2017 for Kopigo project.
  */
-class SummaryActivity: AppCompatActivity(), SummaryContract.View {
+class SummaryActivity: AppCompatActivity(), SummaryContract.View, SummaryDialog.OrderDialogListener {
 
     @Inject
     lateinit var presenter: SummaryPresenter
@@ -113,10 +116,15 @@ class SummaryActivity: AppCompatActivity(), SummaryContract.View {
     }
 
     override fun navigateToHome() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        showToast("Order has been created")
+        startNewActivitySession(MainActivity.newIntent(this))
     }
 
     override fun navigateToAddItem() {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun onPrintClick() {
+        presenter.print()
     }
 }

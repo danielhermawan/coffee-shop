@@ -3,7 +3,6 @@ package co.folto.kopigo.ui.main
 import co.folto.kopigo.data.UserRepository
 import co.folto.kopigo.util.start
 import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.rxkotlin.subscribeBy
 import timber.log.Timber
 
 /**
@@ -35,12 +34,12 @@ class MainPresenter (
         view.showLoading(true)
         val request = userRepository.logout()
             .start()
-            .subscribeBy(
-                onComplete = {
+            .subscribe(
+                {
                     view.showMessage("Successfully logout from kopigo")
                     view.navigateToLogin()
                 },
-                onError = {
+                {
                     Timber.e(it)
                     view.showMessage("There is some kind of network trouble")
                     view.showLoading(false)

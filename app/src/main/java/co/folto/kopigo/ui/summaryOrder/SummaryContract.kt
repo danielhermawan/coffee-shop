@@ -23,5 +23,6 @@ interface SummaryContract {
         fun addMoreItem()
         fun loadSummary()
         fun modifyProduct(id: Int, qty: Int)
+        fun print()
     }
 }

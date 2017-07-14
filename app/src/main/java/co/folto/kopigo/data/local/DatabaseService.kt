@@ -12,15 +12,23 @@ import javax.inject.Singleton
  */
 @Singleton
 class DatabaseService @Inject constructor(private val db: AppDatabase){
-    fun saveCategories(categories: List<ProductCategory>): Completable {
-        db.categoryDao().insertAll(*categories.toTypedArray())
-        return Completable.complete()
-    }
+    fun saveCategories(categories: List<ProductCategory>): Completable
+        = Completable.create {
+            db.categoryDao().insertAll(*categories.toTypedArray())
+            it.onComplete()
+        }
+
 
     fun saveProducts(products: List<Product>): Completable {
         db.productDao().insertAll(*products.toTypedArray())
         return Completable.complete()
     }
+
+    fun clearProducts(): Completable
+        = Completable.create {
+            db.productDao().clear()
+            it.onComplete()
+        }
 
     fun getProducts(): Flowable<List<Product>> = db.productDao().getAll()
 }

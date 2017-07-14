@@ -35,21 +35,34 @@ class UserRepository @Inject constructor(
     }
 
     override fun logout(): Completable {
-        return kopigoService.logout()
-            .doOnComplete {
-                preferenceHelper.clear()
-            }
+        //preferenceHelper.clear()
+        return databaseService.clearProducts()//.concatWith(kopigoService.logout())
     }
 
-    override fun clearData() {
+    override fun clearData(): Completable {
         preferenceHelper.clear()
+        return databaseService.clearProducts()
     }
 
+    //todo: change database source become more reactive using combinelatest or merge to call api
+    //and database simoustely and can adapt realtime localdatabase change using this trick
+    //https://github.com/kaushikgopal/RxJava-Android-Samples#9-pseudo-caching--retrieve-data-first-from-a-cache-then-a-network-call-using-concat-concateager-merge-or-publish
     override fun getUserProducts(): Flowable<List<Product>> {
+        val databaseSource = databaseService.getProducts().take(1)
         val apiSource = kopigoService.getUserProduct()
-                .doOnNext { databaseService.saveProducts(it) }
-        val databaseSource = databaseService.getProducts()
-        //return Flowable.concat(databaseSource, apiSource)
-        return apiSource
+            .doOnNext { databaseService.saveProducts(it) }
+            .onErrorResumeNext{t: Throwable -> getProductsRecoveryObservable(t)}
+        return Flowable.concat(databaseSource, apiSource)
+    }
+
+    //todo: fix error empty
+    private fun getProductsRecoveryObservable(error: Throwable): Flowable<List<Product>>? {
+        return databaseService.getProducts().take(1)
+                .switchMap({
+                    var result = Flowable.just(it)
+                    if(it.count() == 0)
+                        result = Flowable.error(error)
+                    result
+                })
     }
 }

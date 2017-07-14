@@ -1,6 +1,5 @@
 package co.folto.kopigo.ui.order
 
-import co.folto.kopigo.data.ProductRepository
 import co.folto.kopigo.data.UserRepository
 import co.folto.kopigo.data.model.Product
 import co.folto.kopigo.data.model.ProductCategory
@@ -16,7 +15,6 @@ import javax.inject.Inject
  * Created by Daniel on 6/16/2017 for Kopigo project.
  */
 class OrderPresenter @Inject constructor(
-    private val productRepository: ProductRepository,
     private val userRepository: UserRepository,
     private val view: OrderContract.View
 ): OrderContract.Presenter {
@@ -61,7 +59,8 @@ class OrderPresenter @Inject constructor(
                     products = it.toMutableList()
                     categories = products.map { it.category }.distinctBy { it.id }.toMutableList()
                     view.showProduct(categories, products)
-                    view.showLoading(false)
+                    if(products.count() != 0)
+                        view.showLoading(false)
                 },
                 {
                     Timber.e(it)
@@ -90,6 +89,9 @@ class OrderPresenter @Inject constructor(
         val orderedProduct = products.filter {
             it.orderQuantity != 0
         }
-        view.navigateToSummary(orderedProduct)
+        if(orderedProduct.isEmpty())
+            view.showMessage("Barang tidak boleh kosong")
+        else
+            view.navigateToSummary(orderedProduct)
     }
 }
