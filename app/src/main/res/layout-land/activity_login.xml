@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/parentView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bitmap_bglogin">
+
+    <ImageView
+        android:id="@+id/imageLogo"
+        android:layout_width="@dimen/land_login_image_logo"
+        android:layout_height="@dimen/land_login_image_logo"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/bitmap_kopigo_logo"
+        android:contentDescription="@string/app_name"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/imageLogo"
+        android:layout_alignRight="@id/imageLogo"
+        android:layout_below="@id/imageLogo"
+        android:layout_marginTop="@dimen/large_pull"
+        android:text="@string/login.welcome"
+        style="@style/login_welcome"/>
+
+    <LinearLayout
+        android:id="@+id/formLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_form_rounded"
+        android:orientation="vertical"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true">
+
+        <EditText
+            android:id="@+id/editUsername"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/small_space"
+            android:layout_marginRight="@dimen/small_space"
+            android:hint="@string/login.username"
+            android:inputType="text"
+            android:drawableRight="@drawable/ic_person"
+            style="@style/login_editText"/>
+
+        <EditText
+            android:id="@+id/editPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/small_space"
+            android:layout_marginRight="@dimen/small_space"
+            android:hint="@string/login.password"
+            android:inputType="textPassword"
+            android:imeActionLabel="@string/login.sign_in"
+            android:imeActionId="@+id/signup_ime"
+            android:imeOptions="actionUnspecified"
+            android:drawableRight="@drawable/ic_lock"
+            style="@style/login_editText"/>
+
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/progress"
+        android:layout_width="@dimen/item_progressbar"
+        android:layout_height="@dimen/item_progressbar"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@id/formLogin"
+        android:visibility="gone"
+        tools:visibility="visible"/>
+
+
+    <Button
+        android:id="@+id/buttonSignin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/formLogin"
+        android:layout_alignLeft="@+id/formLogin"
+        android:layout_alignRight="@id/formLogin"
+        android:layout_marginTop="@dimen/tiny_space"
+        android:text="@string/login.sign_in"
+        style="@style/Widget.AppCompat.Button.Colored"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/buttonSignin"
+        android:layout_centerHorizontal="true"
+        android:text="@string/login.forgot_password"
+        style="@style/text_white"/>
+
+    <TextView
+        android:id="@+id/textTnc"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/small_space"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/login.tnc"
+        style="@style/login_copyright"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/textTnc"
+        android:text="@string/login.copyright"
+        style="@style/login_copyright"/>
+
+</RelativeLayout>

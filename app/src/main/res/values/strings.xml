@@ -30,7 +30,9 @@
     <string name="summary_checkout">checkout</string>
     <string name="summary.total_price">TOTAL PRICE</string>
     <string name="summary.print_out">Print Out</string>
+    <string name="summary.order">Order</string>
     <string name="summary.cancel">Cancel</string>
     <string name="summary.items">Items</string>
+
 
 </resources>
