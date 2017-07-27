@@ -24,8 +24,16 @@
         <item name="android:textSize">@dimen/text_small</item>
     </style>
 
+    <style name="text_medium">
+        <item name="android:textSize">@dimen/text_medium</item>
+    </style>
+
     <style name="text_white">
         <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="text_red">
+        <item name="android:textColor">@color/red</item>
     </style>
 
     <style name="text_large.white">
@@ -38,6 +46,10 @@
 
     <style name="text_small.white">
         <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="text_medium.red">
+        <item name="android:textColor">@color/red</item>
     </style>
 
     <style name="padding_horizontal_medium">

@@ -11,6 +11,7 @@ import co.folto.kopigo.KopigoApplication
 import co.folto.kopigo.R
 import co.folto.kopigo.ui.login.LoginActivity
 import co.folto.kopigo.ui.order.OrderActivity
+import co.folto.kopigo.ui.stock.StockActivity
 import co.folto.kopigo.util.startNewActivitySession
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
@@ -39,6 +40,9 @@ class MainActivity : AppCompatActivity(), MainContract.View {
                 .inject(this)
         viewOrder.setOnClickListener {
             startActivity(OrderActivity.newIntent(this))
+        }
+        viewStock.setOnClickListener {
+            startActivity(StockActivity.newIntent(this))
         }
     }
 

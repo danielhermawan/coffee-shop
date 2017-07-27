@@ -17,7 +17,11 @@
 
     <dimen name="item_progressbar">40dp</dimen>
 
+    <dimen name="land_login_image_logo">110dp</dimen>
     <dimen name="login_image_logo">120dp</dimen>
+
+    <dimen name="main_bitmap">65dp</dimen>
+    <dimen name="land_main_bitmap">55dp</dimen>
 
     <dimen name="image_product">50dp</dimen>
     

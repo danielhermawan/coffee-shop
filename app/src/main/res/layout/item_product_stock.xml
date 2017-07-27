@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="horizontal"
+              android:paddingTop="@dimen/small_space"
+              android:paddingBottom="@dimen/small_space"
+              android:paddingLeft="@dimen/medium_space"
+              android:paddingRight="@dimen/medium_space"
+              android:baselineAligned="false">
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_weight="5"
+        android:layout_height="wrap_content">
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imageProductStock"
+            android:layout_width="@dimen/image_product"
+            android:layout_height="@dimen/image_product"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:contentDescription="@string/app_name"/>
+        <TextView
+            android:id="@+id/textProductStock"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/imageProductStock"
+            android:layout_marginLeft="@dimen/medium_space"
+            android:layout_marginTop="@dimen/very_small_space"
+            style="@style/text_large.black"
+            tools:text="Drip Coffee88 Pack (3), Original"/>
+        <TextView
+            android:id="@+id/textPriceStock"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textProductStock"
+            android:layout_alignLeft="@id/textProductStock"
+            android:layout_marginTop="@dimen/very_small_space"
+            style="@style/text_large.black"
+            tools:text="IDR 32,000"/>
+        <TextView
+            android:id="@+id/textStock"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textPriceStock"
+            android:layout_alignLeft="@id/textProductStock"
+            android:layout_marginTop="@dimen/very_small_space"
+            style="@style/text_medium.red"
+            tools:text="STOCK: 15 items left"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="2">
+        <ImageButton
+            android:id="@+id/buttonMinusStock"
+            android:layout_width="@dimen/button_operation"
+            android:layout_height="@dimen/button_operation"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/small_space"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/ic_action_remove"
+            style="@style/button_operation.minus"/>
+
+        <TextView
+            android:id="@+id/editQuantityStock"
+            android:layout_width="@dimen/edit_width_operation"
+            android:layout_height="@dimen/button_operation"
+            android:layout_alignTop="@id/buttonMinusStock"
+            android:layout_toRightOf="@id/buttonMinusStock"
+            android:gravity="center"
+            android:background="@color/white"
+            tools:text="0"/>
+
+        <ImageButton
+            android:id="@+id/buttonPlusStock"
+            android:layout_width="@dimen/button_operation"
+            android:layout_height="@dimen/button_operation"
+            android:layout_alignTop="@id/buttonMinusStock"
+            android:layout_toRightOf="@id/editQuantityStock"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/ic_action_plus"
+            style="@style/button_operation.plus"/>
+    </RelativeLayout>
+</LinearLayout>
