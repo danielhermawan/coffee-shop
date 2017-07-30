@@ -20,8 +20,8 @@ class GeneralInterceptor @Inject constructor(
                 .addHeader("Accept", "application/json")
                 .build()
         val response = chain.proceed(newRequest)
-        if(response.code() == 401)
-            bus.post(BusEvent.AuthenticationError())
+        /*if(response.code() == 401)
+            bus.post(BusEvent.AuthenticationError())*/
         return response
     }
 }

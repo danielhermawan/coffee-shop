@@ -6,6 +6,7 @@ import co.folto.kopigo.dagger.module.LocalDataModule
 import co.folto.kopigo.dagger.module.RemoteDataModule
 import co.folto.kopigo.data.OrderRepository
 import co.folto.kopigo.data.ProductRepository
+import co.folto.kopigo.data.RequestRepository
 import co.folto.kopigo.data.UserRepository
 import com.squareup.otto.Bus
 import dagger.Component
@@ -23,5 +24,6 @@ interface DataComponent {
     fun userRepository(): UserRepository
     fun orderRepository(): OrderRepository
     fun productRepository(): ProductRepository
+    fun requestRepository(): RequestRepository
     fun bus(): Bus
 }

@@ -4,6 +4,7 @@ import android.app.Application
 import android.content.Context
 import co.folto.gitfinder.injection.annotation.ApplicationContext
 import com.squareup.otto.Bus
+import com.squareup.otto.ThreadEnforcer
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -25,6 +26,6 @@ class ApplicationModule(val application: Application) {
 
     @Provides
     @Singleton
-    fun providesBus(): Bus = Bus()
+    fun providesBus(): Bus = Bus(ThreadEnforcer.ANY)
 
 }

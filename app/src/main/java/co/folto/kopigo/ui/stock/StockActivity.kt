@@ -14,8 +14,11 @@ import co.folto.kopigo.data.model.Product
 import co.folto.kopigo.data.model.ProductCategory
 import co.folto.kopigo.ui.base.BaseActivity
 import co.folto.kopigo.ui.login.LoginActivity
+import co.folto.kopigo.ui.main.MainActivity
+import co.folto.kopigo.ui.order.OrderAdapter
 import co.folto.kopigo.ui.stock.summaryStockDialog.SummaryDialog
 import co.folto.kopigo.util.showSnack
+import co.folto.kopigo.util.showToast
 import co.folto.kopigo.util.startNewActivitySession
 import kotlinx.android.synthetic.main.activity_order.*
 import kotlinx.android.synthetic.main.content_order.*
@@ -25,9 +28,9 @@ import javax.inject.Inject
  * Created by rudys on 7/5/2017.
  */
 
-class StockActivity: BaseActivity(), StockContract.View {
+class StockActivity: BaseActivity(), StockContract.View, SummaryDialog.StockDialogListener {
 
-   @Inject
+    @Inject
     lateinit var presenter: StockPresenter
 
     companion object {
@@ -98,7 +101,7 @@ class StockActivity: BaseActivity(), StockContract.View {
     }
 
     override fun showProduct(categories: MutableList<ProductCategory>, products: MutableList<Product>) {
-        val orderStockAdapter = OrderStockAdapter(
+        val orderStockAdapter = OrderAdapter(
                 products,
                 categories,
                 { presenter.makeOrder() },
@@ -108,7 +111,16 @@ class StockActivity: BaseActivity(), StockContract.View {
     }
 
 
-    override fun openSummaryDialog(products: MutableList<Product>) {
+    override fun openSummaryDialog(products: List<Product>) {
         SummaryDialog.newInstance(products as ArrayList<Product>).show(fragmentManager, "Summary Dialog")
+    }
+
+    override fun onOkClick(products: ArrayList<Product>) {
+        presenter.requestStock(products)
+    }
+
+    override fun navigateToHome() {
+        showToast("Product Request has been sent")
+        startNewActivitySession(MainActivity.newIntent(this))
     }
 }

@@ -28,4 +28,7 @@ interface KopigoService {
 
     @POST("order")
     fun createOrder(@Body products: OrderRequest): Completable
+
+    @POST("request")
+    fun createRequest(@Body products: OrderRequest): Completable
 }

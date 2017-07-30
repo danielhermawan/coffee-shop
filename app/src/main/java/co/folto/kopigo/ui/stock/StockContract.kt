@@ -12,9 +12,10 @@ interface StockContract {
     interface View: BaseView {
         fun showLoading(boolean: Boolean)
         fun showMessage(string: String)
+        fun navigateToHome()
         fun navigateToLogin()
         fun showProduct(categories: MutableList<ProductCategory>, products: MutableList<Product>)
-        fun openSummaryDialog(products: MutableList<Product>)
+        fun openSummaryDialog(products: List<Product>)
     }
 
     interface Presenter: BasePresenter {
@@ -22,5 +23,6 @@ interface StockContract {
         fun loadProductAndCategory()
         fun makeOrder()
         fun modifyProduct(id: Int, qty: Int)
+        fun requestStock(products: ArrayList<Product>)
     }
 }

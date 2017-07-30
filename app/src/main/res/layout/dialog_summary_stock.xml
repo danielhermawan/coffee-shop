@@ -39,7 +39,7 @@
                 android:layout_marginRight="@dimen/small_space"
                 android:background="@drawable/selector_button_green"
                 android:textColor="@color/white"
-                android:text="@string/summary.order"/>
+                android:text="@string/summary.request"/>
             <Button
                 android:id="@+id/buttonCancel"
                 android:layout_width="0dp"

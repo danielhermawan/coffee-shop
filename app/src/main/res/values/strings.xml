@@ -33,6 +33,7 @@
     <string name="summary.order">Order</string>
     <string name="summary.cancel">Cancel</string>
     <string name="summary.items">Items</string>
+    <string name="summary.request">Request</string>
 
 
 </resources>

@@ -1,6 +1,7 @@
 package co.folto.kopigo.ui.stock
 
 import co.folto.kopigo.data.ProductRepository
+import co.folto.kopigo.data.RequestRepository
 import co.folto.kopigo.data.UserRepository
 import co.folto.kopigo.data.model.Product
 import co.folto.kopigo.data.model.ProductCategory
@@ -17,6 +18,7 @@ import javax.inject.Inject
 class StockPresenter @Inject constructor(
         private val productRepository: ProductRepository,
         private val userRepository: UserRepository,
+        private val requestRepository: RequestRepository,
         private val view: StockContract.View
 ) : StockContract.Presenter {
 
@@ -54,20 +56,21 @@ class StockPresenter @Inject constructor(
     override fun loadProductAndCategory() {
         view.showLoading(true)
         val request = userRepository.getUserProducts()
-                .start()
-                .subscribeBy(
-                        {
-                            products = it.toMutableList()
-                            categories = products.map { it.category }.distinctBy { it.id }.toMutableList()
-                            view.showProduct(categories, products)
-                            view.showLoading(false)
-                        },
-                        {
-                            Timber.e(it)
-                            view.showLoading(false)
-                            view.showMessage("There is some kind of network trouble")
-                        }
-                )
+            .start()
+            .subscribeBy(
+                {
+                    products = it.toMutableList()
+                    categories = products.map { it.category }.distinctBy { it.id }.toMutableList()
+                    view.showProduct(categories, products)
+                    if(products.count() != 0)
+                        view.showLoading(false)
+                },
+                {
+                    Timber.e(it)
+                    view.showLoading(false)
+                    view.showMessage("There is some kind of network trouble")
+                }
+            )
         composite.add(request)
     }
 
@@ -86,11 +89,29 @@ class StockPresenter @Inject constructor(
 
 
     override fun makeOrder() {
-        val orderedStockProduct = products.filter {
+        val orderedProduct = products.filter {
             it.orderQuantity != 0
         }
-       //  view.openSummaryDialog()
+        if(orderedProduct.isEmpty())
+            view.showMessage("Barang tidak boleh kosong")
+        else
+            view.openSummaryDialog(orderedProduct)
     }
 
-
+    override fun requestStock(products: ArrayList<Product>) {
+        view.showLoading(true)
+        val request = requestRepository.createRequest(products)
+            .start()
+            .subscribe(
+                {
+                    view.navigateToHome()
+                },
+                {
+                    Timber.e(it)
+                    view.showLoading(false)
+                    view.showMessage("There is some kind of network trouble")
+                }
+            )
+        composite.add(request);
+    }
 }
