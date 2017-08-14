@@ -26,3 +26,10 @@ fun MutableList<Product>.replace(product: Product) {
     val index = this.indexOfFirst { it.id == product.id }
     this.set(index, product)
 }
+
+fun String.space(max: Int): String {
+    var str = ""
+    for(i in this.length..max)
+        str += " "
+    return str
+}

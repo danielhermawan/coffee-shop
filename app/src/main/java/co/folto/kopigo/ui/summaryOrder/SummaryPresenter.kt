@@ -51,13 +51,13 @@ class SummaryPresenter @Inject constructor(
         view.openSummaryDialog(products)
     }
 
-    override fun print() {
+    override fun createOrder() {
         view.showLoading(true)
         val request = orderRepository.createOrder(products)
             .start()
             .subscribe(
                 {
-                    view.navigateToHome()
+                    view.printReceipt(products, it.id)
                 },
                 {
                     Timber.e(it)

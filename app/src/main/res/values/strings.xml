@@ -34,6 +34,11 @@
     <string name="summary.cancel">Cancel</string>
     <string name="summary.items">Items</string>
     <string name="summary.request">Request</string>
+    <string name="list_device">Select Device</string>
+    <string name="scan_device">Scanning Device</string>
+    <string name="other_device">Other Device</string>
+    <string name="no_device_found">No paired device found</string>
+    <string name="not_connected">Not connected to target device</string>
 
 
 </resources>

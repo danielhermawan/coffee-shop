@@ -16,6 +16,7 @@ interface SummaryContract {
         fun navigateToAddItem()
         fun showSummary(products: MutableList<Product>)
         fun showModifiedProduct(products: MutableList<Product>)
+        fun printReceipt(products: MutableList<Product>, id: Int)
     }
 
     interface Presenter: BasePresenter {
@@ -23,6 +24,6 @@ interface SummaryContract {
         fun addMoreItem()
         fun loadSummary()
         fun modifyProduct(id: Int, qty: Int)
-        fun print()
+        fun createOrder()
     }
 }

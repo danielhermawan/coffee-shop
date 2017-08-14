@@ -1,9 +1,6 @@
 package co.folto.kopigo.data.remote
 
-import co.folto.kopigo.data.model.LoginResponse
-import co.folto.kopigo.data.model.OrderRequest
-import co.folto.kopigo.data.model.Product
-import co.folto.kopigo.data.model.ProductCategory
+import co.folto.kopigo.data.model.*
 import io.reactivex.Completable
 import io.reactivex.Flowable
 import io.reactivex.Single
@@ -27,7 +24,7 @@ interface KopigoService {
     fun getUserProduct(): Flowable<List<Product>>
 
     @POST("order")
-    fun createOrder(@Body products: OrderRequest): Completable
+    fun createOrder(@Body products: OrderRequest): Flowable<Order>
 
     @POST("request")
     fun createRequest(@Body products: OrderRequest): Completable
