@@ -39,6 +39,7 @@
     <string name="other_device">Other Device</string>
     <string name="no_device_found">No paired device found</string>
     <string name="not_connected">Not connected to target device</string>
+    <string name="jumlah_yang_dibayar">Jumlah yang dibayar</string>
 
 
 </resources>

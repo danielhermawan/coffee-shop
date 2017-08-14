@@ -47,15 +47,29 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/textPaymentDetail"/>
+
+        <EditText
+            android:id="@+id/editPayment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/rvPayment"
+            android:layout_marginTop="@dimen/medium_space"
+            android:layout_marginLeft="@dimen/medium_space"
+            android:layout_marginRight="@dimen/medium_space"
+            android:hint="@string/jumlah_yang_dibayar"
+            android:ems="10"
+            android:inputType="number"/>
+
         <Button
             android:id="@+id/buttonCheckout"
             android:layout_width="@dimen/summary_button"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/medium_space"
-            android:layout_below="@id/rvPayment"
+            android:layout_below="@id/editPayment"
             android:layout_centerHorizontal="true"
             android:padding="@dimen/medium_space"
             android:text="@string/summary_checkout"
             style="@style/Widget.AppCompat.Button.Colored"/>
+
     </RelativeLayout>
 </android.support.v4.widget.NestedScrollView>

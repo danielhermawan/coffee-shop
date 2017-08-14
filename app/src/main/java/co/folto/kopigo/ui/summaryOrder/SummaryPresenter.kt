@@ -47,12 +47,17 @@ class SummaryPresenter @Inject constructor(
         view.showModifiedProduct(products)
     }
 
-    override fun checkout() {
-        view.openSummaryDialog(products)
+    override fun checkout(payment: Int) {
+        val total = products.sumBy { it.price * it.orderQuantity }
+        if(payment >= total)
+            view.openSummaryDialog(products)
+        else
+            view.showSnack("Uang yang dibayar tidak cukup")
     }
 
     override fun createOrder() {
         view.showLoading(true)
+        view.disableCheckout(false)
         val request = orderRepository.createOrder(products)
             .start()
             .subscribe(
@@ -63,6 +68,7 @@ class SummaryPresenter @Inject constructor(
                     Timber.e(it)
                     view.showLoading(false)
                     view.showSnack("There is some kind of network trouble")
+                    view.disableCheckout(true)
                 }
             )
         composite.add(request)

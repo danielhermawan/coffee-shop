@@ -17,10 +17,11 @@ interface SummaryContract {
         fun showSummary(products: MutableList<Product>)
         fun showModifiedProduct(products: MutableList<Product>)
         fun printReceipt(products: MutableList<Product>, id: Int)
+        fun disableCheckout(active: Boolean)
     }
 
     interface Presenter: BasePresenter {
-        fun checkout()
+        fun checkout(payment: Int)
         fun addMoreItem()
         fun loadSummary()
         fun modifyProduct(id: Int, qty: Int)

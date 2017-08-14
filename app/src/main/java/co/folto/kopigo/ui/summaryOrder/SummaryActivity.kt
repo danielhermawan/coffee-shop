@@ -64,6 +64,7 @@ class SummaryActivity: AppCompatActivity(),
     //todo: add button
     //todo: print error handling
     //todo: Bikin order dari api dulu baru print
+    @Suppress("CAST_NEVER_SUCCEEDS")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_summary)
@@ -95,7 +96,10 @@ class SummaryActivity: AppCompatActivity(),
         }
         rvPayment.setNestedScrollingEnabled(false)
         buttonCheckout.setOnClickListener {
-            presenter.checkout()
+            if(editPayment.text.toString().isBlank())
+                showSnack("Jumlah yang dibayar harus di isi")
+            else
+                presenter.checkout(editPayment.text.toString().toInt())
         }
 
         if (bluetoothAdapter == null) {
@@ -147,6 +151,10 @@ class SummaryActivity: AppCompatActivity(),
             progress.visibility = View.GONE
     }
 
+    override fun disableCheckout(active: Boolean) {
+        buttonCheckout.setEnabled(active)
+    }
+
     override fun showSnack(message: String) {
         parentView.showSnack(message)
     }
@@ -191,6 +199,7 @@ class SummaryActivity: AppCompatActivity(),
         }
     }
 
+    @Suppress("CAST_NEVER_SUCCEEDS")
     @SuppressLint("SimpleDateFormat")
     override fun printReceipt(products: MutableList<Product>, id: Int) {
         toast("Order has been created. Print started...")
@@ -199,7 +208,9 @@ class SummaryActivity: AppCompatActivity(),
         val str = formatter.format(curDate)
         val date = str + "\n\n\n\n\n"
         val total = products.sumBy { it.orderQuantity * it.price }
-        val totalString = "total:                ${total.thoundsandSeperator()}\n"
+        val totalString = "Total:                ${total.thoundsandSeperator()}\n"
+        val payment = "Tunai:                ${editPayment.text.toString()}"
+        val kembali = "Kembali:              ${total - (editPayment.text.toString().toInt())}"
         val header = "Nama       Qty  Harga   Total"
         var productString = "Item:\n"
         products.forEach {
@@ -221,6 +232,8 @@ class SummaryActivity: AppCompatActivity(),
         //SendDataByte("Name    Quantity    Trice  Total\nShoes   10.00       899     8990\nBall    10.00       1599    15990\n".toByteArray(charset("GBK")))
         //SendDataByte("total：                16889.00\npayment：              17000.00\nKeep the change：      111.00\n".toByteArray(charset("GBK")))
         SendDataByte(totalString.toByteArray(charset("GBK")))
+        SendDataByte(payment.toByteArray(charset("GBK")))
+        SendDataByte(kembali.toByteArray(charset("GBK")))
         SendDataByte("================================\n".toByteArray(charset("GBK")))
         Command.ESC_Align[2] = 0x01 //Make next data center
         SendDataByte(Command.ESC_Align)
