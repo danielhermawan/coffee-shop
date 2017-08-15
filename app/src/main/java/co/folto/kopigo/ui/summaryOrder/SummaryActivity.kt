@@ -208,9 +208,9 @@ class SummaryActivity: AppCompatActivity(),
         val str = formatter.format(curDate)
         val date = str + "\n\n\n\n\n"
         val total = products.sumBy { it.orderQuantity * it.price }
-        val totalString = "Total:                ${total.thoundsandSeperator()}\n"
-        val payment = "Tunai:                ${editPayment.text.toString()}"
-        val kembali = "Kembali:              ${total - (editPayment.text.toString().toInt())}"
+        val totalString = "\nTotal:                ${total.thoundsandSeperator()}\n"
+        val payment = "Tunai:                ${editPayment.text.toString().toInt().thoundsandSeperator()}\n"
+        val kembali = "Kembali:              ${Math.abs(total - (editPayment.text.toString().toInt())).thoundsandSeperator()}\n"
         val header = "Nama       Qty  Harga   Total"
         var productString = "Item:\n"
         products.forEach {
@@ -222,6 +222,8 @@ class SummaryActivity: AppCompatActivity(),
         SendDataByte(Command.ESC_Align)
         Command.GS_ExclamationMark[2] = 0x11
         SendDataByte(Command.GS_ExclamationMark)// Make next font big
+        Command.ESC_Align[2] = 0x01 //Make next data center
+        SendDataByte(Command.ESC_Align)
         SendDataByte("Kopigo\n".toByteArray(charset("GBK")))
         Command.ESC_Align[2] = 0x00
         SendDataByte(Command.ESC_Align)
@@ -256,13 +258,30 @@ class SummaryActivity: AppCompatActivity(),
     }
 
     private fun handlerPrinter(msg: Message) {
+        showLoading(true)
+        disableCheckout(false)
         when (msg.what) {
             BluetoothService.MESSAGE_STATE_CHANGE -> {
                 when (msg.arg1) {
                     BluetoothService.STATE_CONNECTED -> {
                         presenter.createOrder()
                     }
+                    BluetoothService.STATE_LISTEN -> {
+                        toast("connecting to bluetooth device…")
+                    }
                 }
+            }
+            BluetoothService.MESSAGE_TOAST -> {
+                toast(msg.data.getString(BluetoothService.TOAST))
+            }
+            BluetoothService.MESSAGE_UNABLE_CONNECT -> {
+                toast("Unable to connect device, restart the bluetooth device and try again!")
+                showLoading(false)
+                disableCheckout(false)
+            }
+            BluetoothService.MESSAGE_CONNECTION_LOST -> {
+                showLoading(false)
+                disableCheckout(false)
             }
         }
     }

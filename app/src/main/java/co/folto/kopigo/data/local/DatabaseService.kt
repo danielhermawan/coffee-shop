@@ -20,6 +20,7 @@ class DatabaseService @Inject constructor(private val db: AppDatabase){
 
 
     fun saveProducts(products: List<Product>): Completable {
+        db.productDao().clear()
         db.productDao().insertAll(*products.toTypedArray())
         return Completable.complete()
     }
