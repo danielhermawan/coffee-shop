@@ -8,7 +8,9 @@ import android.view.ViewGroup
 import co.folto.kopigo.R
 import co.folto.kopigo.data.model.Product
 import co.folto.kopigo.util.inflate
+import co.folto.kopigo.util.loadNetworkImage
 import co.folto.kopigo.util.thoundsandSeperator
+import com.bumptech.glide.request.RequestOptions
 import kotlinx.android.synthetic.main.item_product.view.*
 
 /**
@@ -41,8 +43,9 @@ class ProductAdapter(val onModified: (Int, Int) -> Unit): RecyclerView.Adapter<P
         @SuppressLint("SetTextI18n")
         fun bind(product: Product) {
             with(itemView) {
-                //imageProduct.loadNetworkImage(context, product.imageUrl, options = RequestOptions().circleCrop())
+                imageProduct.loadNetworkImage(context, product.imageUrl, options = RequestOptions().circleCrop())
                 textProduct.text = product.name.capitalize()
+                textStock.text = "STOCK: " + product.quantity + " items left"
                 textPrice.text = "IDR ${product.price.thoundsandSeperator()}"
                 editQuantity.text = "" + product.orderQuantity
                 buttonMinus.setOnClickListener {

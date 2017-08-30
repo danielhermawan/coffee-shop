@@ -13,13 +13,13 @@
         android:layout_width="0dp"
         android:layout_weight="5"
         android:layout_height="wrap_content">
-        <!--<de.hdodenhof.circleimageview.CircleImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/imageProduct"
             android:layout_width="@dimen/image_product"
             android:layout_height="@dimen/image_product"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
-            android:contentDescription="@string/app_name"/>-->
+            android:contentDescription="@string/app_name"/>
         <TextView
             android:id="@+id/textProduct"
             android:layout_width="wrap_content"
@@ -38,6 +38,14 @@
             android:layout_marginTop="@dimen/very_small_space"
             style="@style/text_large.black"
             tools:text="IDR 32,000"/>
+        <TextView
+            android:id="@+id/textStock"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textPrice"
+            android:layout_alignLeft="@id/textProduct"
+            android:layout_marginTop="@dimen/very_small_space"
+            tools:text="STOCK: 15 items left"/>
     </RelativeLayout>
 
     <RelativeLayout
